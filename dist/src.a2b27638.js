@@ -29227,7 +29227,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./../webfonts/fa-brands-400.eot":[["fa-brands-400.1bb139e6.eot","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.eot"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.eot"],"./../webfonts/fa-brands-400.woff2":[["fa-brands-400.1d34615d.woff2","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2"],"./../webfonts/fa-brands-400.woff":[["fa-brands-400.eca31406.woff","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff"],"./../webfonts/fa-brands-400.ttf":[["fa-brands-400.df86de32.ttf","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.ttf"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.ttf"],"./../webfonts/fa-brands-400.svg":[["fa-brands-400.f1eb0e8c.svg","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.svg"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.svg"],"./../webfonts/fa-regular-400.eot":[["fa-regular-400.a2c1909d.eot","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.eot"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.eot"],"./../webfonts/fa-regular-400.woff2":[["fa-regular-400.5ca8c932.woff2","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2"],"./../webfonts/fa-regular-400.woff":[["fa-regular-400.3c3cc54e.woff","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff"],"./../webfonts/fa-regular-400.ttf":[["fa-regular-400.cde05ce7.ttf","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.ttf"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.ttf"],"./../webfonts/fa-regular-400.svg":[["fa-regular-400.6ef294e6.svg","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.svg"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.svg"],"./../webfonts/fa-solid-900.eot":[["fa-solid-900.90890cef.eot","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.eot"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.eot"],"./../webfonts/fa-solid-900.woff2":[["fa-solid-900.da0e0451.woff2","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2"],"./../webfonts/fa-solid-900.woff":[["fa-solid-900.935b31ea.woff","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff"],"./../webfonts/fa-solid-900.ttf":[["fa-solid-900.f2409036.ttf","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf"],"./../webfonts/fa-solid-900.svg":[["fa-solid-900.c87ba59a.svg","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.svg"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.svg"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"node_modules/react-is/cjs/react-is.development.js":[function(require,module,exports) {
+},{"./..\\webfonts\\fa-brands-400.eot":[["fa-brands-400.1bb139e6.eot","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.eot"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.eot"],"./..\\webfonts\\fa-brands-400.woff2":[["fa-brands-400.1d34615d.woff2","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2"],"./..\\webfonts\\fa-brands-400.woff":[["fa-brands-400.eca31406.woff","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff"],"./..\\webfonts\\fa-brands-400.ttf":[["fa-brands-400.df86de32.ttf","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.ttf"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.ttf"],"./..\\webfonts\\fa-brands-400.svg":[["fa-brands-400.f1eb0e8c.svg","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.svg"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.svg"],"./..\\webfonts\\fa-regular-400.eot":[["fa-regular-400.a2c1909d.eot","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.eot"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.eot"],"./..\\webfonts\\fa-regular-400.woff2":[["fa-regular-400.5ca8c932.woff2","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2"],"./..\\webfonts\\fa-regular-400.woff":[["fa-regular-400.3c3cc54e.woff","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff"],"./..\\webfonts\\fa-regular-400.ttf":[["fa-regular-400.cde05ce7.ttf","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.ttf"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.ttf"],"./..\\webfonts\\fa-regular-400.svg":[["fa-regular-400.6ef294e6.svg","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.svg"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.svg"],"./..\\webfonts\\fa-solid-900.eot":[["fa-solid-900.90890cef.eot","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.eot"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.eot"],"./..\\webfonts\\fa-solid-900.woff2":[["fa-solid-900.da0e0451.woff2","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2"],"./..\\webfonts\\fa-solid-900.woff":[["fa-solid-900.935b31ea.woff","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff"],"./..\\webfonts\\fa-solid-900.ttf":[["fa-solid-900.f2409036.ttf","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf"],"./..\\webfonts\\fa-solid-900.svg":[["fa-solid-900.c87ba59a.svg","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.svg"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.svg"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"node_modules/react-is/cjs/react-is.development.js":[function(require,module,exports) {
 /** @license React v16.13.1
  * react-is.development.js
  *
@@ -30457,17 +30457,17 @@ function Product(product) {
     value: product.avg_stars
   }), /*#__PURE__*/_react.default.createElement("span", {
     className: "jsx-3860456737" + " " + "text-white"
-  }, "(480)"))))), /*#__PURE__*/_react.default.createElement("div", {
+  }, "(", product.total_reviews, ")"))))), /*#__PURE__*/_react.default.createElement("div", {
     className: "jsx-3860456737" + " " + "card-body"
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "jsx-3860456737" + " " + "d-flex justify-content-between align-items-center"
   }, /*#__PURE__*/_react.default.createElement("a", (_React$createElement = {
     href: ""
-  }, _defineProperty(_React$createElement, "href", ""), _defineProperty(_React$createElement, "className", "jsx-3860456737" + " " + "item-title"), _React$createElement), "Shirt 01"), /*#__PURE__*/_react.default.createElement("h4", {
+  }, _defineProperty(_React$createElement, "href", ""), _defineProperty(_React$createElement, "className", "jsx-3860456737" + " " + "item-title"), _React$createElement), product.name), /*#__PURE__*/_react.default.createElement("h4", {
     className: "jsx-3860456737" + " " + "price pull-right"
-  }, "1000")), /*#__PURE__*/_react.default.createElement("p", {
+  }, product.price)), /*#__PURE__*/_react.default.createElement("p", {
     className: "jsx-3860456737" + " " + "card-text"
-  }, "Lorem ipsum dolor sit amet"))), /*#__PURE__*/_react.default.createElement(_style.default, {
+  }, product.info))), /*#__PURE__*/_react.default.createElement(_style.default, {
     id: "3860456737"
   }, ".product{margin-bottom:20px;}.product img{height:176px;}.product .img-container{position:relative;overflow:hidden;z-index:0;display:block;}.product .img-container .img-options{position:absolute;top:0;right:0;bottom:0;left:0;z-index:1;background-color:rgba(0,0,0,0.6);opacity:0;visibility:none;}.product:hover .img-options{opacity:1;visibility:visible;}.product .img-container .img-options-content{position:absolute;top:40%;right:0;left:0;text-align:center;}.product .price{color:#47bac1;font-size:18px;font-weight:300;margin-bottom:0;}.product .item-title{font-size:18px;color:#646464;line-height:2;}"));
 }
@@ -30500,30 +30500,30 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function Banner() {
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("section", {
-    className: _style.default.dynamic([["1366184512", [_main.default]]]) + " " + "well flex m-0"
+    className: _style.default.dynamic([["900728683", [_main.default]]]) + " " + "well flex m-0"
   }, /*#__PURE__*/_react.default.createElement("div", {
-    className: _style.default.dynamic([["1366184512", [_main.default]]]) + " " + "container flex-fill"
+    className: _style.default.dynamic([["900728683", [_main.default]]]) + " " + "container flex-fill"
   }, /*#__PURE__*/_react.default.createElement("div", {
-    className: _style.default.dynamic([["1366184512", [_main.default]]]) + " " + "caption"
+    className: _style.default.dynamic([["900728683", [_main.default]]]) + " " + "caption"
   }, /*#__PURE__*/_react.default.createElement("h1", {
-    className: _style.default.dynamic([["1366184512", [_main.default]]])
+    className: _style.default.dynamic([["900728683", [_main.default]]])
   }, "Summer Offer"), /*#__PURE__*/_react.default.createElement("p", {
-    className: _style.default.dynamic([["1366184512", [_main.default]]])
+    className: _style.default.dynamic([["900728683", [_main.default]]])
   }, "Lorem ipsum dolor sit amet, consectetur adipisicing elit."), /*#__PURE__*/_react.default.createElement("p", {
-    className: _style.default.dynamic([["1366184512", [_main.default]]])
+    className: _style.default.dynamic([["900728683", [_main.default]]])
   }, /*#__PURE__*/_react.default.createElement("a", {
     href: "#",
     role: "button",
-    className: _style.default.dynamic([["1366184512", [_main.default]]]) + " " + "btn btn-lg btn-primary"
+    className: _style.default.dynamic([["900728683", [_main.default]]]) + " " + "btn btn-lg btn-primary"
   }, "Learn more"))))), /*#__PURE__*/_react.default.createElement(_style.default, {
-    id: "1366184512",
+    id: "900728683",
     dynamic: [_main.default]
   }, ".well.__jsx-style-dynamic-selector{height:400px;background-repeat:no-repeat;background-image:url(".concat(_main.default, ");background-size:cover;background-position:center center;}.well.__jsx-style-dynamic-selector .caption.__jsx-style-dynamic-selector{position:absolute;top:150px;left:40px;bottom:auto;right:auto;text-align:left;color:white;}.well.__jsx-style-dynamic-selector .caption.__jsx-style-dynamic-selector h1.__jsx-style-dynamic-selector{font-weight:700;font-size:38px;text-transform:uppercase;}")));
 }
 
 var _default = Banner;
 exports.default = _default;
-},{"styled-jsx/style":"node_modules/styled-jsx/style.js","react":"node_modules/react/index.js","../assets/images/main.jpg":"src/assets/images/main.jpg"}],"src/pages/Home.js":[function(require,module,exports) {
+},{"styled-jsx/style":"node_modules/styled-jsx/style.js","react":"node_modules/react/index.js","../assets/images/main.jpg":"src/assets/images/main.jpg"}],"src/pages/Home/Category.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30533,23 +30533,306 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _Navigation = _interopRequireDefault(require("../components/Navigation"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _Product = _interopRequireDefault(require("../components/Product"));
+function Category(_ref) {
+  var name = _ref.name,
+      img = _ref.img,
+      to = _ref.to,
+      alt = _ref.alt;
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "card product"
+  }, /*#__PURE__*/_react.default.createElement("img", {
+    className: "card-img-top",
+    src: img,
+    alt: alt
+  }), /*#__PURE__*/_react.default.createElement("div", {
+    className: "card-body text-center p-2"
+  }, /*#__PURE__*/_react.default.createElement("a", {
+    href: to,
+    className: "item-title"
+  }, name)));
+}
 
-var _Banner = _interopRequireDefault(require("../components/Banner"));
+var _default = Category;
+exports.default = _default;
+},{"react":"node_modules/react/index.js"}],"src/pages/Home/Gaurantees.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _style = _interopRequireDefault(require("styled-jsx/style"));
+
+var _react = _interopRequireDefault(require("react"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function Gaurantees() {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("section", {
+    className: "jsx-3575624367" + " " + "container gaurantees mt-5"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "jsx-3575624367" + " " + "row copy"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "jsx-3575624367" + " " + "col-lg-12 text-center"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "jsx-3575624367" + " " + "navy-line"
+  }), /*#__PURE__*/_react.default.createElement("h1", {
+    className: "jsx-3575624367"
+  }, "GAURANTEES"), /*#__PURE__*/_react.default.createElement("p", {
+    className: "jsx-3575624367"
+  }, "Lorem ipsum dolor sit amet, consectetur adipisicing elit."))), /*#__PURE__*/_react.default.createElement("div", {
+    className: "jsx-3575624367" + " " + "row guarantees"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "jsx-3575624367" + " " + "col-sm-4 col-xs-12"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "jsx-3575624367" + " " + "box text-center"
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    "aria-hidden": "true",
+    className: "jsx-3575624367" + " " + "fa fa-truck"
+  }), /*#__PURE__*/_react.default.createElement("h4", {
+    className: "jsx-3575624367"
+  }, "Free Shipping"), /*#__PURE__*/_react.default.createElement("span", {
+    className: "jsx-3575624367"
+  }, "Excepteur sint occaecat cupidatat."))), /*#__PURE__*/_react.default.createElement("div", {
+    className: "jsx-3575624367" + " " + "col-sm-4 col-xs-12"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "jsx-3575624367" + " " + "box text-center"
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    "aria-hidden": "true",
+    className: "jsx-3575624367" + " " + "fa fa-money-bill"
+  }), /*#__PURE__*/_react.default.createElement("h4", {
+    className: "jsx-3575624367"
+  }, "100% money back"), /*#__PURE__*/_react.default.createElement("span", {
+    className: "jsx-3575624367"
+  }, "Excepteur sint occaecat cupidatat."))), /*#__PURE__*/_react.default.createElement("div", {
+    className: "jsx-3575624367" + " " + "col-sm-4 col-xs-12"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "jsx-3575624367" + " " + "box text-center"
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    "aria-hidden": "true",
+    className: "jsx-3575624367" + " " + "fa fa-headphones"
+  }), /*#__PURE__*/_react.default.createElement("h4", {
+    className: "jsx-3575624367"
+  }, "24/7 support"), /*#__PURE__*/_react.default.createElement("span", {
+    className: "jsx-3575624367"
+  }, "Excepteur sint occaecat cupidatat."))))), /*#__PURE__*/_react.default.createElement(_style.default, {
+    id: "3575624367"
+  }, ".gaurantees.jsx-3575624367{padding-bottom:60px;}.guarantees.jsx-3575624367 .box.jsx-3575624367{background-color:transparent;border:5px solid #e4e4e4;-webkit-transition:all 0.3s ease;transition:all 0.3s ease;padding:50px 20px;margin-bottom:35px;}.guarantees.jsx-3575624367 .box.jsx-3575624367:hover{border:5px solid #1ab394;}.guarantees.jsx-3575624367 .box.jsx-3575624367 i.jsx-3575624367{font-size:48px;color:#1ab394;}"));
+}
+
+var _default = Gaurantees;
+exports.default = _default;
+},{"styled-jsx/style":"node_modules/styled-jsx/style.js","react":"node_modules/react/index.js"}],"src/components/Footer.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _style = _interopRequireDefault(require("styled-jsx/style"));
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Footer() {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("footer", {
+    className: "jsx-783801245" + " " + "flex-fill bg-light contact p-4"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "jsx-783801245" + " " + "container"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "jsx-783801245" + " " + "row copy mb-4 mt-3"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "jsx-783801245" + " " + "col-12 text-center"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "jsx-783801245" + " " + "navy-line"
+  }), /*#__PURE__*/_react.default.createElement("h1", {
+    className: "jsx-783801245"
+  }, "Contact Us"), /*#__PURE__*/_react.default.createElement("p", {
+    className: "jsx-783801245"
+  }, "Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod."))), /*#__PURE__*/_react.default.createElement("div", {
+    className: "jsx-783801245" + " " + "row mb-m"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "jsx-783801245" + " " + "col-lg-3 col-lg-offset-3"
+  }, /*#__PURE__*/_react.default.createElement("address", {
+    className: "jsx-783801245"
+  }, /*#__PURE__*/_react.default.createElement("strong", {
+    className: "jsx-783801245"
+  }, /*#__PURE__*/_react.default.createElement("span", {
+    className: "jsx-783801245" + " " + "navy"
+  }, "Fastcampus, Inc.")), /*#__PURE__*/_react.default.createElement("br", {
+    className: "jsx-783801245"
+  }), "339, Teheran-ro, Gangnam-gu", /*#__PURE__*/_react.default.createElement("br", {
+    className: "jsx-783801245"
+  }), "Seoul, Republic of Korea", /*#__PURE__*/_react.default.createElement("br", {
+    className: "jsx-783801245"
+  }), /*#__PURE__*/_react.default.createElement("abbr", {
+    title: "Phone",
+    className: "jsx-783801245"
+  }, "P:"), " (02) 111-1111")), /*#__PURE__*/_react.default.createElement("div", {
+    className: "jsx-783801245" + " " + "col-lg-4"
+  }, /*#__PURE__*/_react.default.createElement("p", {
+    className: "jsx-783801245" + " " + "text-color"
+  }, "Consectetur adipisicing elit. Aut eaque, totam corporis laboriosam veritatis quis ad perspiciatis, totam corporis laboriosam veritatis, consectetur adipisicing elit quos non quis ad perspiciatis, totam corporis ea,"))), /*#__PURE__*/_react.default.createElement("div", {
+    className: "jsx-783801245" + " " + "row mb-5"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "jsx-783801245" + " " + "col-12 text-center"
+  }, /*#__PURE__*/_react.default.createElement("a", {
+    href: "mailto:test@email.com",
+    className: "jsx-783801245" + " " + "btn btn-primary"
+  }, "Send us mail"), /*#__PURE__*/_react.default.createElement("p", {
+    className: "jsx-783801245" + " " + "m-t-sm"
+  }, "Or follow us on social platform"), /*#__PURE__*/_react.default.createElement("ul", {
+    className: "jsx-783801245" + " " + "list-line social-icon m-0 p-0"
+  }, /*#__PURE__*/_react.default.createElement("li", {
+    className: "jsx-783801245" + " " + "list-inline-item"
+  }, /*#__PURE__*/_react.default.createElement("a", {
+    href: "#",
+    className: "jsx-783801245"
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    className: "jsx-783801245" + " " + "fab fa-twitter"
+  }))), /*#__PURE__*/_react.default.createElement("li", {
+    className: "jsx-783801245" + " " + "list-inline-item"
+  }, /*#__PURE__*/_react.default.createElement("a", {
+    href: "#",
+    className: "jsx-783801245"
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    className: "jsx-783801245" + " " + "fab fa-facebook-f"
+  }))), /*#__PURE__*/_react.default.createElement("li", {
+    className: "jsx-783801245" + " " + "list-inline-item"
+  }, /*#__PURE__*/_react.default.createElement("a", {
+    href: "#",
+    className: "jsx-783801245"
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    className: "jsx-783801245" + " " + "fab fa-linkedin-in"
+  })))))), /*#__PURE__*/_react.default.createElement("div", {
+    className: "jsx-783801245" + " " + "row"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "jsx-783801245" + " " + "col-12 text-center mt-m mb-m"
+  }, /*#__PURE__*/_react.default.createElement("p", {
+    className: "jsx-783801245"
+  }, /*#__PURE__*/_react.default.createElement("strong", {
+    className: "jsx-783801245"
+  }, "\xA9 2020 Fastcampus"), /*#__PURE__*/_react.default.createElement("br", {
+    className: "jsx-783801245"
+  }), "consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde."))))), /*#__PURE__*/_react.default.createElement(_style.default, {
+    id: "783801245"
+  }, "footer.jsx-783801245 p.jsx-783801245{color:#aeaeae;font-size:13px;}.social-icon.jsx-783801245 a.jsx-783801245{background:#1ab394;color:#fff;padding:4px 8px;height:28px;width:28px;display:block;border-radius:50px;font-size:13px;}.contact.jsx-783801245{background-image:url('./assets/images/world_map.png');background-position:50% 50%;background-repeat:no-repeat;}"));
+}
+
+var _default = Footer;
+exports.default = _default;
+},{"styled-jsx/style":"node_modules/styled-jsx/style.js","react":"node_modules/react/index.js"}],"src/pages/Home/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _Navigation = _interopRequireDefault(require("../../components/Navigation"));
+
+var _Product = _interopRequireDefault(require("../../components/Product"));
+
+var _Banner = _interopRequireDefault(require("../../components/Banner"));
+
+var _Category = _interopRequireDefault(require("./Category"));
+
+var _Gaurantees = _interopRequireDefault(require("./Gaurantees"));
+
+var _Footer = _interopRequireDefault(require("../../components/Footer"));
+
+var _item = _interopRequireDefault(require("../../assets/images/products/item5.jpeg"));
+
+var _item2 = _interopRequireDefault(require("../../assets/images/products/item6.jpeg"));
+
+var _item3 = _interopRequireDefault(require("../../assets/images/products/item7.jpeg"));
+
+var _item4 = _interopRequireDefault(require("../../assets/images/products/item10.jpeg"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 function Home() {
-  var product = {
-    id: '1',
-    name: 'React Note',
-    price: 2000,
-    info: 'Lorem ipsum dolor sit amet',
-    avg_stars: 4,
-    total_reviews: 200
-  };
+  var _useState = (0, _react.useState)({
+    newArrivals: [{
+      id: '1',
+      name: 'React Note',
+      price: 2000,
+      info: 'Lorem ipsum dolor sit amet',
+      avg_stars: 4,
+      total_reviews: 200
+    }, {
+      id: '2',
+      name: 'React Product 2',
+      price: 13000,
+      info: 'Lorem ipsum dolor sit amet',
+      avg_stars: 4,
+      total_reviews: 5
+    }, {
+      id: '3',
+      name: 'React Product 3',
+      price: 4000,
+      info: 'Lorem ipsum dolor sit amet',
+      avg_stars: 2,
+      total_reviews: 10
+    }, {
+      id: '4',
+      name: 'React Product 4',
+      price: 5000,
+      info: 'Lorem ipsum dolor sit amet',
+      avg_stars: 1,
+      total_reviews: 10
+    }],
+    categories: [{
+      id: '1',
+      name: 'Watch',
+      to: '#',
+      img: _item.default
+    }, {
+      id: '2',
+      name: 'Clothes',
+      to: '#',
+      img: _item2.default
+    }, {
+      id: '3',
+      name: 'Shoes',
+      to: '#',
+      img: _item3.default
+    }, {
+      id: '4',
+      name: 'Gloves',
+      to: '#',
+      img: _item4.default
+    }]
+  }),
+      _useState2 = _slicedToArray(_useState, 2),
+      state = _useState2[0],
+      setState = _useState2[1];
+
+  var newArrivals = state.newArrivals,
+      categories = state.categories;
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_Navigation.default, null), /*#__PURE__*/_react.default.createElement("main", null, /*#__PURE__*/_react.default.createElement(_Banner.default, null), /*#__PURE__*/_react.default.createElement("section", {
     className: "new-arrivals container"
   }, /*#__PURE__*/_react.default.createElement("div", {
@@ -30560,9 +30843,12 @@ function Home() {
     className: "navy-line"
   }), /*#__PURE__*/_react.default.createElement("h1", null, "NEW ARRIVALS"), /*#__PURE__*/_react.default.createElement("p", null, "Lorem ipsum dolor sit amet, consectetur adipisicing elit."))), /*#__PURE__*/_react.default.createElement("div", {
     className: "row items"
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "col-xs-12 col-sm-6 col-md-3 col-lg-3"
-  }, /*#__PURE__*/_react.default.createElement(_Product.default, product)))), /*#__PURE__*/_react.default.createElement("section", {
+  }, newArrivals.map(function (product) {
+    return /*#__PURE__*/_react.default.createElement("div", {
+      key: product.id,
+      className: "col-xs-12 col-sm-6 col-md-3 col-lg-3"
+    }, /*#__PURE__*/_react.default.createElement(_Product.default, product));
+  }))), /*#__PURE__*/_react.default.createElement("section", {
     className: "featured-collection container my-5"
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "row copy"
@@ -30572,64 +30858,31 @@ function Home() {
     className: "navy-line"
   }), /*#__PURE__*/_react.default.createElement("h1", null, "FEATURED COLLECTION"), /*#__PURE__*/_react.default.createElement("p", null, "Lorem ipsum dolor sit amet, consectetur adipisicing elit."))), /*#__PURE__*/_react.default.createElement("div", {
     className: "row"
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "col-xs-12 col-sm-6 col-md-3 col-lg-3"
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "card product"
-  }, /*#__PURE__*/_react.default.createElement("img", {
-    className: "card-img-top",
-    src: "assets/images/products/item5.jpeg",
-    alt: ""
-  }), /*#__PURE__*/_react.default.createElement("div", {
-    className: "card-body text-center p-2"
-  }, /*#__PURE__*/_react.default.createElement("a", {
-    href: "",
-    className: "item-title"
-  }, "Watches")))), /*#__PURE__*/_react.default.createElement("div", {
-    className: "col-xs-12 col-sm-6 col-md-3 col-lg-3"
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "card product"
-  }, /*#__PURE__*/_react.default.createElement("img", {
-    className: "card-img-top",
-    src: "assets/images/products/item6.jpeg",
-    alt: ""
-  }), /*#__PURE__*/_react.default.createElement("div", {
-    className: "card-body text-center p-2"
-  }, /*#__PURE__*/_react.default.createElement("a", {
-    href: "",
-    className: "item-title"
-  }, "Clothes")))), /*#__PURE__*/_react.default.createElement("div", {
-    className: "col-xs-12 col-sm-6 col-md-3 col-lg-3"
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "card product"
-  }, /*#__PURE__*/_react.default.createElement("img", {
-    className: "card-img-top",
-    src: "assets/images/products/item7.jpeg",
-    alt: ""
-  }), /*#__PURE__*/_react.default.createElement("div", {
-    className: "card-body text-center p-2"
-  }, /*#__PURE__*/_react.default.createElement("a", {
-    href: "",
-    className: "item-title"
-  }, "Shoes")))), /*#__PURE__*/_react.default.createElement("div", {
-    className: "col-xs-12 col-sm-6 col-md-3 col-lg-3"
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "card product"
-  }, /*#__PURE__*/_react.default.createElement("img", {
-    className: "card-img-top",
-    src: "assets/images/products/item10.jpeg",
-    alt: ""
-  }), /*#__PURE__*/_react.default.createElement("div", {
-    className: "card-body text-center p-2"
-  }, /*#__PURE__*/_react.default.createElement("a", {
-    href: "",
-    className: "item-title"
-  }, "Gloves"))))))));
+  }, categories.map(function (collection) {
+    return /*#__PURE__*/_react.default.createElement("div", {
+      key: collection.id,
+      className: "col-xs-12 col-sm-6 col-md-3 col-lg-3"
+    }, /*#__PURE__*/_react.default.createElement(_Category.default, {
+      name: collection.name,
+      to: collection.name,
+      img: collection.img,
+      alt: collection.name
+    }));
+  }))), /*#__PURE__*/_react.default.createElement("section", {
+    className: "explore flex-fill bg-light my-5 py-4 text-center"
+  }, /*#__PURE__*/_react.default.createElement("h3", {
+    className: "mb-3"
+  }, "Over ", /*#__PURE__*/_react.default.createElement("strong", null, "50.000"), " digital products!"), /*#__PURE__*/_react.default.createElement("a", {
+    className: "btn btn-rounded btn-noborder btn-lg btn-primary",
+    href: "#products"
+  }, "Explore Store ", /*#__PURE__*/_react.default.createElement("i", {
+    className: "fas fa-arrow-right"
+  }))), /*#__PURE__*/_react.default.createElement(_Gaurantees.default, null)), /*#__PURE__*/_react.default.createElement(_Footer.default, null));
 }
 
 var _default = Home;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","../components/Navigation":"src/components/Navigation/index.js","../components/Product":"src/components/Product.js","../components/Banner":"src/components/Banner.js"}],"src/App.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../../components/Navigation":"src/components/Navigation/index.js","../../components/Product":"src/components/Product.js","../../components/Banner":"src/components/Banner.js","./Category":"src/pages/Home/Category.js","./Gaurantees":"src/pages/Home/Gaurantees.js","../../components/Footer":"src/components/Footer.js","../../assets/images/products/item5.jpeg":"src/assets/images/products/item5.jpeg","../../assets/images/products/item6.jpeg":"src/assets/images/products/item6.jpeg","../../assets/images/products/item7.jpeg":"src/assets/images/products/item7.jpeg","../../assets/images/products/item10.jpeg":"src/assets/images/products/item10.jpeg"}],"src/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30659,7 +30912,7 @@ function App() {
 
 var _default = App;
 exports.default = _default;
-},{"styled-jsx/style":"node_modules/styled-jsx/style.js","react":"node_modules/react/index.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","@fortawesome/fontawesome-free/css/all.css":"node_modules/@fortawesome/fontawesome-free/css/all.css","./pages/Home":"src/pages/Home.js"}],"src/index.js":[function(require,module,exports) {
+},{"styled-jsx/style":"node_modules/styled-jsx/style.js","react":"node_modules/react/index.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","@fortawesome/fontawesome-free/css/all.css":"node_modules/@fortawesome/fontawesome-free/css/all.css","./pages/Home":"src/pages/Home/index.js"}],"src/index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -30699,7 +30952,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60980" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55959" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

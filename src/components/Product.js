@@ -1,5 +1,5 @@
 import React from 'react';
-import allImage from '../assets/images/products/*.jpeg';
+import allImage from '@/assets/images/products/*.jpeg';
 import Rating from './Rating';
 import PropTypes from 'prop-types';
 
@@ -31,7 +31,7 @@ export default function Product(product) {
               </ul>
               <div className="text-warning">
                 <Rating total={5} value={product.avg_stars} />
-                <span className="text-white">(480)</span>
+                <span className="text-white">({product.total_reviews})</span>
               </div>
             </div>
           </div>
@@ -39,11 +39,11 @@ export default function Product(product) {
         <div className="card-body">
           <div className="d-flex justify-content-between align-items-center">
             <a href="" className="item-title" href="">
-              Shirt 01
+              {product.name}
             </a>
-            <h4 className="price pull-right">1000</h4>
+            <h4 className="price pull-right">{product.price}</h4>
           </div>
-          <p className="card-text">Lorem ipsum dolor sit amet</p>
+          <p className="card-text">{product.info}</p>
         </div>
       </div>
       <style jsx global>{`

@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import '@fortawesome/fontawesome-free/css/all.css';
-import Home from './pages/Home';
+import Home from '@/pages/Home';
 
 function App() {
   return (
