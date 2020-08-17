@@ -90,7 +90,7 @@ function Home() {
   return (
     <>
       <Drawer isOpen={isShopingCartOpen}>
-        <Cart />
+        <Cart onClose={handleCartClick} />
       </Drawer>
       <Navigation onCartClick={handleCartClick} />
       <main>

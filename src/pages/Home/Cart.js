@@ -2,13 +2,19 @@ import React from 'react';
 import item3 from '@/assets/images/products/item3.jpeg';
 import item10 from '@/assets/images/products/item10.jpeg';
 
-function Cart() {
+function Cart({ onClose }) {
+  const handleCloseBtnClicked = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    onClose();
+  };
+
   return (
     <>
       <div className="shopping-cart">
         <div className="cart-header text-center p-3">
-          <a href="#" className="drawer-close navy-link float-left">
-            <i className="fa fa-chevron-left fa-lg" aria-hidden="true"></i>
+          <a href="#" className="drawer-close navy-link float-left" onClick={handleCloseBtnClicked}>
+            <i className="fa fa-chevron-right fa-lg" aria-hidden="true"></i>
           </a>
           <span className="navy">SHOPPING CART</span>
           <div className="navy-line"></div>
