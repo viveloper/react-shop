@@ -3,10 +3,10 @@ import NaviItem from './NaviItem';
 import Logo from './Logo';
 import TopBar from './TopBar';
 
-function Navigation() {
+function Navigation({ onCartClick }) {
   return (
     <nav className="navbar navbar-expand-md fixed-top navbar-dark p-0 flex-column align-items-stretch">
-      <TopBar />
+      <TopBar onCartClick={onCartClick} />
       <div className="container align-items-start menu">
         <Logo />
         <button className="navbar-toggler" type="button">

@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Drawer from '@/components/Drawer';
+import Cart from './Cart';
 import Navigation from '@/components/Navigation';
 import Product from '@/components/Product';
 import Banner from '@/components/Banner';
@@ -13,6 +15,7 @@ import GlovesImg from '@/assets/images/products/item10.jpeg';
 
 function Home() {
   const [state, setState] = useState({
+    isShopingCartOpen: false,
     newArrivals: [
       {
         id: '1',
@@ -75,11 +78,21 @@ function Home() {
     ],
   });
 
-  const { newArrivals, categories } = state;
+  const { isShopingCartOpen, newArrivals, categories } = state;
+
+  const handleCartClick = () => {
+    setState({
+      ...state,
+      isShopingCartOpen: !isShopingCartOpen,
+    });
+  };
 
   return (
     <>
-      <Navigation />
+      <Drawer isOpen={isShopingCartOpen}>
+        <Cart />
+      </Drawer>
+      <Navigation onCartClick={handleCartClick} />
       <main>
         <Banner />
         <section className="new-arrivals container">

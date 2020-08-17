@@ -1,6 +1,12 @@
 import React from 'react';
 
-function TopBar() {
+function TopBar({ onCartClick }) {
+  const handleCartBtnClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    onCartClick();
+  };
+
   return (
     <>
       <div className="flex-fill top-bar bg-dark">
@@ -18,7 +24,7 @@ function TopBar() {
               </span>
             </li>
             <li className="nav-item cart">
-              <a href="#" className="shopping-cart-btn">
+              <a href="#" className="shopping-cart-btn" onClick={handleCartBtnClick}>
                 <i className="fas fa-shopping-cart"></i> Cart <span className="item-number">(2)</span>
               </a>
             </li>
