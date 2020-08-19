@@ -14,8 +14,8 @@ function Navigation({ cartItemCounts, onCartClick }) {
         </button>
         <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
           <ul className="navbar-nav">
-            <NaviItem to="#" text="Home" active />
-            <NaviItem to="#" text="Products" />
+            <NaviItem to="/home" text="Home" />
+            <NaviItem to="/products" text="Products" />
           </ul>
         </div>
       </div>

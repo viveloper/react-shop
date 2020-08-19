@@ -1,12 +1,24 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import '@fortawesome/fontawesome-free/css/all.css';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import Home from '@/pages/Home';
 
 function App() {
   return (
-    <div>
-      <Home />
+    <>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/home" exact>
+            <Home />
+          </Route>
+          <Route path="/products" exact>
+            <Home />
+          </Route>
+          <Redirect from="/" to="/home" />
+        </Switch>
+      </BrowserRouter>
+
       <style jsx global>{`
         @import url('//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;lang=en');
 
@@ -93,7 +105,7 @@ function App() {
           text-align: center;
         }
       `}</style>
-    </div>
+    </>
   );
 }
 

@@ -1,26 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { NavLink } from 'react-router-dom';
 
-function NaviItem({ to, text, action, active }) {
-  const onClickAnchor = (e) => {
-    if (action) {
-      e.preventDefault();
-      e.stopPropagation();
-      action();
-    }
+const LinkItem = React.forwardRef((props, ref) => {
+  const handleClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    props.navigate();
   };
-
   return (
     <>
-      <li
-        className={classNames('nav-item', {
-          active,
-        })}>
-        <a href={to} onClick={onClickAnchor} className="nav-link">
-          {text}
+      <li className={classNames('nav-item', props.className)}>
+        <a ref={ref} href="" className="nav-link" onClick={handleClick}>
+          {props.text}
         </a>
       </li>
+
       <style jsx>
         {`
           .nav-item > .nav-link {
@@ -49,6 +45,14 @@ function NaviItem({ to, text, action, active }) {
           }
         `}
       </style>
+    </>
+  );
+});
+
+function NaviItem({ to, text }) {
+  return (
+    <>
+      <NavLink to={to} exact activeClassName="active" text={text} component={LinkItem} />
     </>
   );
 }
