@@ -8,7 +8,7 @@ export default function Product({ product, onCartClick }) {
   const handleCartClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    onCartClick(product.id);
+    onCartClick(product);
   };
   return (
     <>

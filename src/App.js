@@ -2,19 +2,17 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import PublicLayout from '@/layouts/PublicLayout';
 import Home from '@/pages/Home';
+import ProductList from '@/pages/ProductList';
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <Switch>
-          <Route path="/home" exact>
-            <Home />
-          </Route>
-          <Route path="/products" exact>
-            <Home />
-          </Route>
+          <PublicLayout path="/home" component={Home} />
+          <PublicLayout path="/products" component={ProductList} />
           <Redirect from="/" to="/home" />
         </Switch>
       </BrowserRouter>
