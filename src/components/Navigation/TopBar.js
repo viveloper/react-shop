@@ -1,6 +1,6 @@
 import React from 'react';
 
-function TopBar({ onCartClick }) {
+function TopBar({ cartItemCounts, onCartClick }) {
   const handleCartBtnClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -25,7 +25,7 @@ function TopBar({ onCartClick }) {
             </li>
             <li className="nav-item cart">
               <a href="#" className="shopping-cart-btn" onClick={handleCartBtnClick}>
-                <i className="fas fa-shopping-cart"></i> Cart <span className="item-number">(2)</span>
+                <i className="fas fa-shopping-cart"></i> Cart <span className="item-number">({cartItemCounts})</span>
               </a>
             </li>
           </ul>

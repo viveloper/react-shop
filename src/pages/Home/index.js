@@ -76,9 +76,10 @@ function Home() {
         img: GlovesImg,
       },
     ],
+    cartItems: [],
   });
 
-  const { isShopingCartOpen, newArrivals, categories } = state;
+  const { isShopingCartOpen, newArrivals, categories, cartItems } = state;
 
   const handleCartClick = () => {
     setState({
@@ -87,12 +88,43 @@ function Home() {
     });
   };
 
+  const handleProductCartClick = (id) => {
+    if (cartItems.find((item) => item.id === id)) {
+      setState({
+        ...state,
+        cartItems: cartItems.map((item) => (item.id === id ? { ...item, count: item.count + 1 } : item)),
+      });
+    } else {
+      const selectedProduct = newArrivals.find((item) => item.id === id);
+      setState({
+        ...state,
+        cartItems: [...cartItems, { ...selectedProduct, count: 1 }],
+      });
+    }
+  };
+
+  const handleCartItemRemoveClick = (id) => {
+    setState({
+      ...state,
+      cartItems: cartItems.filter((item) => item.id !== id),
+    });
+  };
+
+  const handleCheckout = ({ items, totalPrice }) => {
+    console.log(`Checkout ${JSON.stringify(items)} total: ${totalPrice}`);
+  };
+
   return (
     <>
       <Drawer isOpen={isShopingCartOpen}>
-        <Cart onClose={handleCartClick} />
+        <Cart
+          items={cartItems}
+          onClose={handleCartClick}
+          onRemoveClick={handleCartItemRemoveClick}
+          onCheckout={handleCheckout}
+        />
       </Drawer>
-      <Navigation onCartClick={handleCartClick} />
+      <Navigation cartItemCounts={cartItems.length} onCartClick={handleCartClick} />
       <main>
         <Banner />
         <section className="new-arrivals container">
@@ -106,7 +138,7 @@ function Home() {
           <div className="row items">
             {newArrivals.map((product) => (
               <div key={product.id} className="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-                <Product {...product} />
+                <Product product={product} onCartClick={handleProductCartClick} />
               </div>
             ))}
           </div>

@@ -3,8 +3,13 @@ import allImage from '@/assets/images/products/*.jpeg';
 import Rating from './Rating';
 import PropTypes from 'prop-types';
 
-export default function Product(product) {
+export default function Product({ product, onCartClick }) {
   const img = allImage[`item${product.id}`];
+  const handleCartClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    onCartClick(product.id);
+  };
   return (
     <>
       <div className="product card">
@@ -19,7 +24,7 @@ export default function Product(product) {
                   </a>
                 </li>
                 <li className="list-inline-item">
-                  <a href="" className="btn btn-light">
+                  <a href="" className="btn btn-light" onClick={handleCartClick}>
                     <i className="fas fa-shopping-cart"></i>
                   </a>
                 </li>
@@ -99,10 +104,13 @@ export default function Product(product) {
 }
 
 Product.propTypes = {
-  id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
-  info: PropTypes.string.isRequired,
-  avg_stars: PropTypes.number.isRequired,
-  total_reviews: PropTypes.number.isRequired,
+  product: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    info: PropTypes.string.isRequired,
+    avg_stars: PropTypes.number.isRequired,
+    total_reviews: PropTypes.number.isRequired,
+  }),
+  onCartClick: PropTypes.func.isRequired,
 };
