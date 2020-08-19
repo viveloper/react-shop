@@ -7,7 +7,7 @@ function Drawer({ isOpen, children }) {
   };
 
   const close = () => {
-    document.body.style.transform = 'translateX(0)';
+    document.body.style.transform = '';
   };
 
   useEffect(() => {

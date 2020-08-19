@@ -161,12 +161,12 @@ a.navy-link:hover {
   border-bottom: 1px solid #e7eaec;
   border-radius: 0;
 }
-.navbar-scroll .top-bar {
+/* .navbar-scroll .top-bar {
   display: none;
 }
 .navbar-scroll .top-bar.no-hide {
   display: block;
-}
+} */
 .navbar-scroll > .active > a:focus {
   background: transparent;
   color: inherit;
