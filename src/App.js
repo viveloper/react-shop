@@ -11,7 +11,7 @@ function App() {
     <>
       <BrowserRouter>
         <Switch>
-          <PublicLayout path="/home" component={Home} />
+          <PublicLayout path="/home" theme="home" component={Home} />
           <PublicLayout path="/products" component={ProductList} />
           <Redirect from="/" to="/home" />
         </Switch>

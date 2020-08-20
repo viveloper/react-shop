@@ -19,27 +19,26 @@ const LinkItem = React.forwardRef((props, ref) => {
 
       <style jsx>
         {`
-          .nav-item > .nav-link {
+          :global(.nav-item > .nav-link) {
             color: #fff;
             font-family: 'Open Sans', helvetica, arial, sans-serif;
             font-weight: 700;
             letter-spacing: 1px;
             text-transform: uppercase;
           }
-          .nav-link {
+          :global(.nav-link) {
             padding-top: 25px;
             border-top: 6px solid transparent;
           }
-          .nav-item.active > .nav-link,
-          .nav-item.active > .nav-link:hover {
+          :global(.nav-item.active > .nav-link, .nav-item.active > .nav-link:hover) {
             background: transparent;
             color: #fff;
             border-top: 6px solid #1ab394;
           }
-          .nav-item > .nav-link:hover {
+          :global(.nav-item > .nav-link:hover) {
             color: #1ab394;
           }
-          .active > a:focus {
+          :global(.active > a:focus) {
             background: transparent;
             color: #fff;
           }

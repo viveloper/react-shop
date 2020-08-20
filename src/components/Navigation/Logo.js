@@ -6,7 +6,7 @@ function Logo() {
       <a className="navbar-brand" href="#">
         Fast Shop
       </a>
-      <style jsx>{`
+      {/* <style jsx>{`
         .navbar-brand:hover,
         .navbar-brand:focus {
           background: #17a185;
@@ -23,7 +23,7 @@ function Logo() {
           font-weight: 700;
           transition: all 0.3s ease-in-out 0s;
         }
-      `}</style>
+      `}</style> */}
     </>
   );
 }

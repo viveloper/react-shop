@@ -5,7 +5,7 @@ import Cart from '@/pages/Home/Cart';
 import Navigation from '@/components/Navigation';
 import Footer from '@/pages/Home/Footer';
 
-function PublicLayout({ component: Component, ...rest }) {
+function PublicLayout({ theme, component: Component, ...rest }) {
   const [isShopingCartOpen, setIsShopingCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState([]);
 
@@ -42,7 +42,7 @@ function PublicLayout({ component: Component, ...rest }) {
               onCheckout={handleCheckout}
             />
           </Drawer>
-          <Navigation cartItemCounts={cartItems.length} onCartClick={handleCartClick} />
+          <Navigation theme={theme} cartItemCounts={cartItems.length} onCartClick={handleCartClick} />
           <Component {...matchProps} onAddCartItem={addCartItem} />
           <Footer />
         </>
