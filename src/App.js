@@ -1,10 +1,13 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import '@fortawesome/fontawesome-free/css/all.css';
+import 'bootstrap-slider';
+import 'bootstrap-slider/dist/css/bootstrap-slider.min.css';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import PublicLayout from '@/layouts/PublicLayout';
 import Home from '@/pages/Home';
 import ProductList from '@/pages/ProductList';
+import ProductDetail from '@/pages/ProductDetail';
 
 function App() {
   return (
@@ -12,7 +15,8 @@ function App() {
       <BrowserRouter>
         <Switch>
           <PublicLayout path="/home" theme="home" component={Home} />
-          <PublicLayout path="/products" component={ProductList} />
+          <PublicLayout path="/products" exact component={ProductList} />
+          <PublicLayout path="/products/:id" component={ProductDetail} />
           <Redirect from="/" to="/home" />
         </Switch>
       </BrowserRouter>

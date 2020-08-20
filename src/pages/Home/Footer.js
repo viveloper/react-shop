@@ -1,4 +1,5 @@
 import React from 'react';
+import worldMap from '@/assets/images/world_map.png';
 
 function Footer() {
   return (
@@ -87,7 +88,7 @@ function Footer() {
           font-size: 13px;
         }
         .contact {
-          background-image: url('./assets/images/world_map.png');
+          background-image: url(${worldMap});
           background-position: 50% 50%;
           background-repeat: no-repeat;
         }

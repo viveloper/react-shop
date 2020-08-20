@@ -1,8 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Breadcrumb from '@/components/Breadcrumb';
 import Product from '@/components/Product';
+import $ from 'jquery';
 
 function ProductList({ onAddCartItem }) {
+  const [minPrice, setMinPrice] = useState(250);
+  const [maxPrice, setMaxPrice] = useState(450);
+
+  // console.log(minPrice, maxPrice);
+
   const [products, setProducts] = useState([
     {
       id: '1',
@@ -37,6 +43,25 @@ function ProductList({ onAddCartItem }) {
       total_reviews: 10,
     },
   ]);
+
+  useEffect(() => {
+    const slider = $('input.price-range').slider({});
+    const priceMinEl = $('input#price-min');
+    const priceMaxEl = $('input#price-max');
+    const currentPrice = slider.slider('getValue');
+    const currency = '$';
+    priceMinEl.val(`${currency} ${currentPrice[0]}`);
+    priceMaxEl.val(`${currency} ${currentPrice[1]}`);
+
+    slider.on('slide', (v) => {
+      const min = v.value[0];
+      const max = v.value[1];
+      priceMinEl.val(`${currency} ${min}`);
+      priceMaxEl.val(`${currency} ${max}`);
+      setMinPrice(min);
+      setMaxPrice(max);
+    });
+  }, []);
 
   return (
     <>
@@ -74,7 +99,6 @@ function ProductList({ onAddCartItem }) {
                   <input
                     type="text"
                     className="price-range"
-                    value=""
                     data-slider-min="10"
                     data-slider-max="1000"
                     data-slider-step="5"
@@ -83,9 +107,9 @@ function ProductList({ onAddCartItem }) {
                   <br />
                   <span className="amount-wrapper">
                     <span className="price-label">Price:</span>
-                    <input type="text" id="price-min" readonly="" />
+                    <input type="text" id="price-min" readOnly="" />
                     <strong>-</strong>
-                    <input type="text" id="price-max" readonly="" />
+                    <input type="text" id="price-max" readOnly="" />
                   </span>
                 </div>
               </div>
@@ -144,15 +168,15 @@ function ProductList({ onAddCartItem }) {
           font-weight: 700;
           text-align: right;
         }
-        .slider.slider-horizontal {
+        :global(.slider.slider-horizontal) {
           width: 100%;
         }
-        .price-range-card .slider-handle {
+        :global(.price-range-card .slider-handle) {
           background-image: none;
           border: 3px solid #1ab394;
           background-color: #ffffff;
         }
-        .price-range-card .slider-selection {
+        :global(.price-range-card .slider-selection) {
           background-color: #1ab394;
           background-image: none;
         }

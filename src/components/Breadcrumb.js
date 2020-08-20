@@ -32,7 +32,7 @@ function Breadcrumb({ pathName }) {
           <div className="row align-items-center">
             <div className="col-6">
               <div className="page-title">
-                <h2>Product List</h2>
+                <h2>{currentPath.displayName}</h2>
               </div>
             </div>
             <div className="col-6">

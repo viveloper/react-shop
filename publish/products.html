@@ -472,6 +472,9 @@
           $('.offcanvas').removeClass('open');
         });
 
+        console.log($('input.price-range'));
+        console.log($('input.price-range').slider);
+
         const slider = $('input.price-range').slider({});
         const priceMinEl = $('input#price-min');
         const priceMaxEl = $('input#price-max');

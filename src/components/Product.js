@@ -1,15 +1,26 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import allImage from '@/assets/images/products/*.jpeg';
 import Rating from './Rating';
 import PropTypes from 'prop-types';
 
 export default function Product({ product, onCartClick }) {
+  const history = useHistory();
+
   const img = allImage[`item${product.id}`];
+
   const handleCartClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
     onCartClick(product);
   };
+
+  const handleDetailClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    history.push(`/products/${product.id}`);
+  };
+
   return (
     <>
       <div className="product card">
@@ -29,7 +40,7 @@ export default function Product({ product, onCartClick }) {
                   </a>
                 </li>
                 <li className="list-inline-item">
-                  <a href="./product-detail.html" className="btn btn-light">
+                  <a href="" className="btn btn-light" onClick={handleDetailClick}>
                     <i className="fas fa-eye"></i>
                   </a>
                 </li>
