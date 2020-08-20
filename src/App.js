@@ -5,9 +5,11 @@ import 'bootstrap-slider';
 import 'bootstrap-slider/dist/css/bootstrap-slider.min.css';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import PublicLayout from '@/layouts/PublicLayout';
+import ProtectedLayout from '@/layouts/ProtectedLayout';
 import Home from '@/pages/Home';
 import ProductList from '@/pages/ProductList';
 import ProductDetail from '@/pages/ProductDetail';
+import Checkout from '@/pages/Checkout';
 
 function App() {
   return (
@@ -17,6 +19,7 @@ function App() {
           <PublicLayout path="/home" theme="home" component={Home} />
           <PublicLayout path="/products" exact component={ProductList} />
           <PublicLayout path="/products/:id" component={ProductDetail} />
+          <ProtectedLayout path="/checkout" component={Checkout} />
           <Redirect from="/" to="/home" />
         </Switch>
       </BrowserRouter>

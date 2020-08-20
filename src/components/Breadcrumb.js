@@ -2,29 +2,6 @@ import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 
 function Breadcrumb({ pathName }) {
-  const pathList = [
-    {
-      id: 0,
-      to: '/home',
-      name: 'home',
-      displayName: 'home',
-    },
-    {
-      id: 1,
-      to: '/products',
-      name: 'products',
-      displayName: 'product list',
-    },
-    {
-      id: 2,
-      to: '/products/:id',
-      name: 'productDetail',
-      displayName: 'product detail',
-    },
-  ];
-
-  const currentPath = useMemo(() => pathList.find((path) => path.name === pathName), [pathName]);
-
   return (
     <>
       <section className="breadcrumb-wrapper mb-4">
@@ -32,24 +9,34 @@ function Breadcrumb({ pathName }) {
           <div className="row align-items-center">
             <div className="col-6">
               <div className="page-title">
-                <h2>{currentPath.displayName}</h2>
+                <h2>
+                  {pathName === 'products'
+                    ? 'product list'
+                    : pathName === 'productDetail'
+                    ? 'product detail'
+                    : pathName === 'checkout'
+                    ? 'checkout'
+                    : ''}
+                </h2>
               </div>
             </div>
             <div className="col-6">
               <ol className="breadcrumb justify-content-end align-items-center">
-                {pathList
-                  .filter((path) => path.id <= currentPath.id)
-                  .map((path) =>
-                    path.name !== pathName ? (
-                      <li key={path.name} className="breadcrumb-item">
-                        <Link to={path.to}>{path.displayName}</Link>
-                      </li>
-                    ) : (
-                      <li key={path.name} className="breadcrumb-item active">
-                        {path.displayName}
-                      </li>
-                    )
-                  )}
+                <li className="breadcrumb-item">
+                  <Link to="/home">home</Link>
+                </li>
+                {pathName === 'products' ? (
+                  <li className="breadcrumb-item active">product list</li>
+                ) : pathName === 'productDetail' ? (
+                  <>
+                    <li className="breadcrumb-item">
+                      <Link to="/products">product list</Link>
+                    </li>
+                    <li className="breadcrumb-item active">product detail</li>
+                  </>
+                ) : pathName === 'checkout' ? (
+                  <li className="breadcrumb-item active">checkout</li>
+                ) : null}
               </ol>
             </div>
           </div>
