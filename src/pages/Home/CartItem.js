@@ -14,8 +14,8 @@ function CartItem({ id, name, count, price, onRemoveClick }) {
         <a href="#remove" className="navy-link remove-item" onClick={handleRemoveClick}>
           ×
         </a>
-        <a href="./product-detail.html">
-          <img width="250" height="250" src={allImage[`item${id}`]} alt="Note 01" className="p-3" />
+        <a href={`/products/${id}`}>
+          <img width="250" height="250" src={allImage[`item${id}`]} alt={name} className="p-3" />
           {name}
         </a>
         <span className="quantity">

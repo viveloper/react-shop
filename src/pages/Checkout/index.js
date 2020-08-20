@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import Breadcrumb from '@/components/Breadcrumb';
+import CartItem from '@/pages/Home/CartItem';
 import allImage from '@/assets/images/products/*.jpeg';
 
 function Checkout() {
@@ -52,9 +53,7 @@ function Checkout() {
     });
   };
 
-  const handleRemoveItemClick = (e, id) => {
-    e.preventDefault();
-    e.stopPropagation();
+  const handleRemoveItemClick = (id) => {
     setCartItems(cartItems.filter((item) => item.id !== id));
   };
 
@@ -218,22 +217,14 @@ function Checkout() {
               <h2 className="m-0">YOUR ORDER</h2>
               <ul className="list-unstyled mb-4">
                 {cartItems.map((item) => (
-                  <li key={item.id} className="cart-item">
-                    <a
-                      href="#remove"
-                      className="navy-link remove-item"
-                      onClick={(e) => handleRemoveItemClick(e, item.id)}>
-                      ×
-                    </a>
-                    <a href={`/products/${item.id}`}>
-                      <img width="250" height="250" src={allImage[`item${item.id}`]} alt={item.name} className="p-3" />
-                      {item.name}
-                    </a>
-                    <span className="quantity">
-                      {' '}
-                      {item.count} × <span className="price">{item.price} WON</span>{' '}
-                    </span>
-                  </li>
+                  <CartItem
+                    key={item.id}
+                    id={item.id}
+                    name={item.name}
+                    count={item.count}
+                    price={item.price}
+                    onRemoveClick={handleRemoveItemClick}
+                  />
                 ))}
               </ul>
 
