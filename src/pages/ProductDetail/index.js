@@ -1,8 +1,9 @@
 import React, { useState, useMemo } from 'react';
 import Breadcrumb from '@/components/Breadcrumb';
 import Product from '@/components/Product';
+import NavTabs from './NavTabs';
+import TabPanes from './TabPanes';
 import allImage from '@/assets/images/products/*.jpeg';
-import classNames from 'classnames';
 
 function ProductDetail({ match, onAddCartItem }) {
   const { id } = match.params;
@@ -50,9 +51,7 @@ function ProductDetail({ match, onAddCartItem }) {
   const product = useMemo(() => products.find((item) => item.id === id), [id]);
   const relatedProduct = useMemo(() => products.find((item) => parseInt(item.id) === (parseInt(id) % 4) + 1), [id]);
 
-  const handleTabClick = (e, tabName) => {
-    e.preventDefault();
-    e.stopPropagation();
+  const handleTabClick = (tabName) => {
     setTab(tabName);
   };
 
@@ -111,79 +110,8 @@ function ProductDetail({ match, onAddCartItem }) {
                     </a>
                   </div>
                   <div>
-                    {/* Nav tabs */}
-                    <ul className="nav nav-tabs nav-tabs-alt" role="tablist">
-                      <li role="presentation" className="nav-item">
-                        <a
-                          className={classNames('nav-link', { active: tab === 'info' })}
-                          href="#info"
-                          aria-controls="info"
-                          role="tab"
-                          data-toggle="tab"
-                          onClick={(e) => handleTabClick(e, 'info')}>
-                          Info
-                        </a>
-                      </li>
-                      <li role="presentation" className="nav-item">
-                        <a
-                          className={classNames('nav-link', { active: tab === 'review' })}
-                          href="#review"
-                          aria-controls="review"
-                          role="tab"
-                          data-toggle="tab"
-                          onClick={(e) => handleTabClick(e, 'review')}>
-                          Reviews
-                        </a>
-                      </li>
-                      <li role="presentation" className="nav-item">
-                        <a
-                          className={classNames('nav-link', { active: tab === 'shipping' })}
-                          href="#shipping"
-                          aria-controls="shipping"
-                          role="tab"
-                          data-toggle="tab"
-                          onClick={(e) => handleTabClick(e, 'shipping')}>
-                          Shipping
-                        </a>
-                      </li>
-                    </ul>
-
-                    {/* Tab panes */}
-                    <div className="tab-content mt-3">
-                      <div role="tabpanel" className={classNames('tab-pane', { active: tab === 'info' })} id="info">
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae aliquid, aut, pariatur
-                          maiores eius blanditiis minus vitae nostrum quidem, dolorem minima rerum ratione. Tenetur
-                          assumenda repellat aut, ea animi distinctio.
-                        </p>
-                        <ul>
-                          <li>Lorem ipsum dolor sit amet</li>
-                          <li>consectetur adipisicing elit</li>
-                        </ul>
-                      </div>
-                      <div role="tabpanel" className={classNames('tab-pane', { active: tab === 'review' })} id="review">
-                        <div className="text-center">
-                          <p className="h2 text-warning">
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                          </p>
-                          <p>
-                            <strong>5.0</strong>/5.0 out of <strong>5</strong> Ratings
-                          </p>
-                        </div>
-                      </div>
-                      <div
-                        role="tabpanel"
-                        className={classNames('tab-pane', { active: tab === 'shipping' })}
-                        id="shipping">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius repudiandae culpa soluta sit,
-                        recusandae nulla veniam exercitationem consequatur ratione accusantium facere vel, magni
-                        laudantium, vero non minus quas cupiditate asperiores.
-                      </div>
-                    </div>
+                    <NavTabs tab={tab} onTabClick={handleTabClick} />
+                    <TabPanes tab={tab} />
                   </div>
                 </div>
               </div>
@@ -340,53 +268,6 @@ function ProductDetail({ match, onAddCartItem }) {
         }
         .product-info .qty:focus {
           outline: none;
-        }
-
-        /* tab */
-        .product-info .nav-tabs {
-          background-color: #f9f9f9;
-          border-bottom: none;
-        }
-
-        .product-info .nav-tabs li > a {
-          color: #646464;
-          font-weight: 600;
-          border-radius: 0;
-        }
-        .product-info .nav-tabs > li > a:hover {
-          color: #5c90d2;
-          background-color: transparent;
-          border-color: transparent;
-        }
-        .product-info .nav-tabs > li > a.active,
-        .product-info .nav-tabs > li > a.active:hover,
-        .product-info .nav-tabs > li > a.active:focus {
-          color: #646464;
-          background-color: #fff;
-          border-color: transparent;
-        }
-
-        .product-info .nav-tabs {
-          background-color: transparent;
-          border-bottom: 1px solid #e9e9e9;
-        }
-        .product-info .nav-tabs > li > a {
-          -webkit-transition: all 0.15s ease-out;
-          transition: all 0.15s ease-out;
-        }
-        .product-info .nav-tabs > li > a:hover {
-          -webkit-box-shadow: 0 2px #5c90d2;
-          box-shadow: 0 2px #5c90d2;
-        }
-        .product-info .nav-tabs li > a.active,
-        .product-info .nav-tabs li > a.active:hover,
-        .product-info .nav-tabs li > a.active:focus {
-          -webkit-box-shadow: 0 2px #5c90d2;
-          box-shadow: 0 2px #5c90d2;
-        }
-        .product-info .tab-content {
-          padding: 20px 20px 1px;
-          overflow: hidden;
         }
       `}</style>
     </>
