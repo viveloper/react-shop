@@ -2,12 +2,16 @@ import React, { useState, useMemo } from 'react';
 import Breadcrumb from '@/components/Breadcrumb';
 import Product from '@/components/Product';
 import allImage from '@/assets/images/products/*.jpeg';
+import classNames from 'classnames';
 
 function ProductDetail({ match, onAddCartItem }) {
   const { id } = match.params;
-
   const img = allImage[`item${id}`];
 
+  const [tab, setTab] = useState('info');
+  const [quantity, setQuantity] = useState(1);
+
+  // [ToDo] : Fetch Redux Store
   const [products, setProducts] = useState([
     {
       id: '1',
@@ -46,6 +50,16 @@ function ProductDetail({ match, onAddCartItem }) {
   const product = useMemo(() => products.find((item) => item.id === id), [id]);
   const relatedProduct = useMemo(() => products.find((item) => parseInt(item.id) === (parseInt(id) % 4) + 1), [id]);
 
+  const handleTabClick = (e, tabName) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setTab(tabName);
+  };
+
+  const handleQuantityChange = (e) => {
+    setQuantity(e.target.value);
+  };
+
   return (
     <>
       <main className="gray-bg">
@@ -74,10 +88,13 @@ function ProductDetail({ match, onAddCartItem }) {
                   </p>
                   <div className="btn-area mb-5">
                     <div className="quantity_select">
-                      <select name="quantity" title="Qty" className="qty">
-                        <option value="1" selected="">
-                          1
-                        </option>
+                      <select
+                        name="quantity"
+                        title="Qty"
+                        className="qty"
+                        value={quantity}
+                        onChange={handleQuantityChange}>
+                        <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
                         <option value="4">4</option>
@@ -97,17 +114,35 @@ function ProductDetail({ match, onAddCartItem }) {
                     {/* Nav tabs */}
                     <ul className="nav nav-tabs nav-tabs-alt" role="tablist">
                       <li role="presentation" className="nav-item">
-                        <a className="nav-link" href="#info" aria-controls="info" role="tab" data-toggle="tab">
+                        <a
+                          className={classNames('nav-link', { active: tab === 'info' })}
+                          href="#info"
+                          aria-controls="info"
+                          role="tab"
+                          data-toggle="tab"
+                          onClick={(e) => handleTabClick(e, 'info')}>
                           Info
                         </a>
                       </li>
                       <li role="presentation" className="nav-item">
-                        <a className="nav-link" href="#review" aria-controls="review" role="tab" data-toggle="tab">
+                        <a
+                          className={classNames('nav-link', { active: tab === 'review' })}
+                          href="#review"
+                          aria-controls="review"
+                          role="tab"
+                          data-toggle="tab"
+                          onClick={(e) => handleTabClick(e, 'review')}>
                           Reviews
                         </a>
                       </li>
                       <li role="presentation" className="nav-item">
-                        <a className="nav-link" href="#shipping" aria-controls="shipping" role="tab" data-toggle="tab">
+                        <a
+                          className={classNames('nav-link', { active: tab === 'shipping' })}
+                          href="#shipping"
+                          aria-controls="shipping"
+                          role="tab"
+                          data-toggle="tab"
+                          onClick={(e) => handleTabClick(e, 'shipping')}>
                           Shipping
                         </a>
                       </li>
@@ -115,7 +150,7 @@ function ProductDetail({ match, onAddCartItem }) {
 
                     {/* Tab panes */}
                     <div className="tab-content mt-3">
-                      <div role="tabpanel" className="tab-pane active" id="info">
+                      <div role="tabpanel" className={classNames('tab-pane', { active: tab === 'info' })} id="info">
                         <p>
                           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae aliquid, aut, pariatur
                           maiores eius blanditiis minus vitae nostrum quidem, dolorem minima rerum ratione. Tenetur
@@ -126,7 +161,7 @@ function ProductDetail({ match, onAddCartItem }) {
                           <li>consectetur adipisicing elit</li>
                         </ul>
                       </div>
-                      <div role="tabpanel" className="tab-pane" id="review">
+                      <div role="tabpanel" className={classNames('tab-pane', { active: tab === 'review' })} id="review">
                         <div className="text-center">
                           <p className="h2 text-warning">
                             <i className="fa fa-star"></i>
@@ -140,7 +175,10 @@ function ProductDetail({ match, onAddCartItem }) {
                           </p>
                         </div>
                       </div>
-                      <div role="tabpanel" className="tab-pane" id="shipping">
+                      <div
+                        role="tabpanel"
+                        className={classNames('tab-pane', { active: tab === 'shipping' })}
+                        id="shipping">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius repudiandae culpa soluta sit,
                         recusandae nulla veniam exercitationem consequatur ratione accusantium facere vel, magni
                         laudantium, vero non minus quas cupiditate asperiores.

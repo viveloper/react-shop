@@ -1,12 +1,8 @@
 import React, { useState } from 'react';
-import Drawer from '@/components/Drawer';
-import Cart from './Cart';
-import Navigation from '@/components/Navigation';
 import Product from '@/components/Product';
 import Banner from '@/components/Banner';
 import Collection from './Category';
 import Gaurantees from './Gaurantees';
-import Footer from './Footer';
 
 import WatchImg from '@/assets/images/products/item5.jpeg';
 import ClothesImg from '@/assets/images/products/item6.jpeg';

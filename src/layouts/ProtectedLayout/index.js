@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import PublicLayout from '@/layouts/PublicLayout';
 
 function ProtectedLayout({ path, theme, component: Component, ...rest }) {
+  // [TodDo] : Check Login
   const isAuth = true;
 
   if (!isAuth) {

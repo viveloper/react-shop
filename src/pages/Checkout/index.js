@@ -25,9 +25,7 @@ function Checkout() {
     },
   ]);
 
-  const totalPrice = useMemo(() => cartItems.reduce((total, item) => total + item.price * item.count, 0), [cartItems]);
-
-  const [inputs, setInputs] = useState({
+  const initialInputsState = {
     email: '',
     phoneNumber: '',
     firstName: '',
@@ -41,7 +39,11 @@ function Checkout() {
     fullName: '',
     expDate: '',
     cvc: '',
-  });
+  };
+
+  const [inputs, setInputs] = useState(initialInputsState);
+
+  const totalPrice = useMemo(() => cartItems.reduce((total, item) => total + item.price * item.count, 0), [cartItems]);
 
   const handleInputChange = (e) => {
     setInputs({

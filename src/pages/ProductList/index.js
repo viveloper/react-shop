@@ -4,11 +4,7 @@ import Product from '@/components/Product';
 import $ from 'jquery';
 
 function ProductList({ onAddCartItem }) {
-  const [minPrice, setMinPrice] = useState(250);
-  const [maxPrice, setMaxPrice] = useState(450);
-
-  // console.log(minPrice, maxPrice);
-
+  // [ToDo] : Fetch Redux Store
   const [products, setProducts] = useState([
     {
       id: '1',
@@ -43,6 +39,12 @@ function ProductList({ onAddCartItem }) {
       total_reviews: 10,
     },
   ]);
+
+  const [minPrice, setMinPrice] = useState(250);
+  const [maxPrice, setMaxPrice] = useState(450);
+
+  // [ToDo] : Filter products by price & category
+  const filteredProducts = products.filter((product) => true);
 
   useEffect(() => {
     const slider = $('input.price-range').slider({});
@@ -128,7 +130,7 @@ function ProductList({ onAddCartItem }) {
                 </div>
               </div>
               <div className="row items">
-                {products.map((product) => (
+                {filteredProducts.map((product) => (
                   <div key={product.id} className="col-xs-6 col-sm-6 col-md-4 col-lg-4">
                     <Product product={product} onCartClick={onAddCartItem} />
                   </div>
