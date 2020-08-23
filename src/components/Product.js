@@ -3,15 +3,17 @@ import PropTypes from 'prop-types';
 import allImage from '../assets/images/products/*.jpeg';
 import Rating from './Rating';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addCartItem } from '@/data/cart';
 
-function Product({ id, name, price, info, avg_stars, total_reviews, onCartBtnClick = () => {} }) {
+function Product({ id, name, price, info, avg_stars, total_reviews }) {
+  const dispatch = useDispatch();
   const img = allImage[`item${id}`];
 
   const handleCartBtnClick = (evt) => {
     evt.preventDefault();
     evt.stopPropagation();
-    onCartBtnClick({ id, name, price, info, avg_stars, total_reviews });
-    return false;
+    dispatch(addCartItem({ id, name, price, info, avg_stars, total_reviews }, 1));
   };
 
   return (

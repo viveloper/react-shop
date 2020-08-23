@@ -4,13 +4,19 @@ import Logo from './Logo';
 import TopBar from './TopBar';
 import classNames from 'classnames';
 import { useLocation } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { toggleCart } from '@/data/cart';
+import { selectCartItemCounts } from '@/data/cart';
 
-export default function Navitation({ onCartClick, cartItemCounts, stickyPaths }) {
+export default function Navitation({ stickyPaths }) {
   const location = useLocation();
+  const dispatch = useDispatch(); // dispatch 추가
   const isStickyPath = stickyPaths.some((v) => new RegExp(v).test(location.pathname));
   const [isSticky, setSticky] = useState(false);
   const ref = useRef(null);
   const changeHeaderOn = 200;
+  const cartItemCounts = useSelector(selectCartItemCounts);
+  const onCartClick = () => dispatch(toggleCart()); // 엑션 dispatch 하도록 변경
 
   console.log('Navitation rendered!');
 
@@ -25,10 +31,6 @@ export default function Navitation({ onCartClick, cartItemCounts, stickyPaths })
   };
 
   useLayoutEffect(() => {
-    // for (let i = 0; i < 100; i++) {
-    //   console.log(i);
-    //   setSticky(false);
-    // }
     if (isStickyPath) {
       window.removeEventListener('scroll', handleScroll);
       return;

@@ -1,7 +1,28 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { getUser } from '@/data/user';
+
+const LoginSingup = () => (
+  <span>
+    <a href="#" data-toggle="modal" data-target="#login-modal">
+      Log in
+    </a>
+    <small>or</small>
+    <a href="#" data-toggle="modal" data-target="#signup-modal">
+      Sign Up
+    </a>
+  </span>
+);
+
+const UserInfo = ({ user }) => (
+  <a>
+    {user.name} ({user.email})
+  </a>
+);
 
 // eslint-disable-next-line react/prop-types
 export default function TopBar({ onCartClick, cartItemCounts }) {
+  const user = useSelector(getUser);
   const handleCartBtnClick = (evt) => {
     evt.preventDefault();
     evt.stopPropagation();
@@ -13,17 +34,7 @@ export default function TopBar({ onCartClick, cartItemCounts }) {
       <div className="flex-fill top-bar bg-dark">
         <div className="container">
           <ul className="flex-fill nav justify-content-end">
-            <li className="nav-item account-login mr-3">
-              <span>
-                <a href="#" data-toggle="modal" data-target="#login-modal">
-                  Log in
-                </a>
-                <small>or</small>
-                <a href="#" data-toggle="modal" data-target="#signup-modal">
-                  Sign Up
-                </a>
-              </span>
-            </li>
+            <li className="nav-item account-login mr-3">{user ? <UserInfo user={user} /> : <LoginSingup />}</li>
             <li className="nav-item cart">
               <a href="#" className="shopping-cart-btn" onClick={handleCartBtnClick}>
                 <i className="fas fa-shopping-cart"></i> Cart <span className="item-number">({cartItemCounts})</span>
@@ -36,7 +47,7 @@ export default function TopBar({ onCartClick, cartItemCounts }) {
         .top-bar {
           min-height: 36px;
         }
-        .top-bar ul li a {
+        .top-bar :global(ul li a) {
           padding: 0 19px;
           line-height: 35px;
           font-size: 14px;

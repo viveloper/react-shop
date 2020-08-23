@@ -1,34 +1,17 @@
-import React, { memo, PureComponent } from 'react';
+import React, { memo } from 'react';
 import allImage from '@/assets/images/products/*.jpeg';
 import { Link } from 'react-router-dom';
-
-class PureCartItem extends PureComponent {
-  render() {
-    const { id, name, price, count } = this.props;
-    console.log('Cart Item Render', id, name, price, count);
-    return (
-      <li className="cart-item">
-        <a href="#remove" className="navy-link remove-item">
-          ×
-        </a>
-        <a href="./product-detail.html">
-          <img width="250" height="250" src={allImage[`item${id}`]} alt={name} className="p-3" />
-          {name}
-        </a>
-        <span className="quantity">
-          {' '}
-          {count} × <span className="price">{price} WON</span>{' '}
-        </span>
-      </li>
-    );
-  }
-}
+import { useSelector, useDispatch } from 'react-redux';
+import { selectCartItems, getTotal } from '@/data/cart';
+import { closeCart, removeCartItem } from '@/data/cart';
 
 const CartItem = memo(function C({ id, name, price, count, onItemRemove }) {
+  const dispatch = useDispatch();
+
   const handleItemBtnClicked = (evt) => {
     evt.preventDefault();
     evt.stopPropagation();
-    onItemRemove({ id, name, price });
+    dispatch(removeCartItem(id));
   };
 
   return (
@@ -49,8 +32,10 @@ const CartItem = memo(function C({ id, name, price, count, onItemRemove }) {
 });
 
 // eslint-disable-next-line react/prop-types
-export default function Cart({ items, onItemRemove, onClose }) {
-  const total = items.reduce((acc, o) => acc + o.count * o.product.price, 0);
+export default function Cart() {
+  const dispatch = useDispatch();
+  const items = useSelector(selectCartItems);
+  const total = getTotal(items);
 
   const handleCheckoutBtnClicked = (evt) => {
     if (total == 0) {
@@ -62,7 +47,7 @@ export default function Cart({ items, onItemRemove, onClose }) {
   const handleCloseBtnClicked = (evt) => {
     evt.preventDefault();
     evt.stopPropagation();
-    onClose();
+    dispatch(closeCart());
   };
 
   return (
