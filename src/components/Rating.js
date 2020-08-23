@@ -1,14 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Rating({ total, value }) {
+function Rating({ value, total }) {
+  const stars = Array(total)
+    .fill(0)
+    .map((x, i) => (i + 1 <= value ? 1 : 0));
+
   return (
     <>
-      {Array(total)
-        .fill('')
-        .map((_, i) => (
-          <i key={i} className={i < value ? 'fas fa-star' : 'far fa-star'}></i>
-        ))}
+      {stars.map((star, i) => (
+        <i className={`${star ? 'fas fa-star' : 'far fa-star'}`} key={i}></i>
+      ))}
     </>
   );
 }

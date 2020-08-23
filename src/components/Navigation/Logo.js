@@ -1,12 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-function Logo() {
+export default function Logo() {
   return (
-    <>
-      <a className="navbar-brand" href="#">
+    <React.Fragment>
+      <Link to="/" className="navbar-brand">
         Fast Shop
-      </a>
-      {/* <style jsx>{`
+      </Link>
+      <style jsx global>{`
         .navbar-brand:hover,
         .navbar-brand:focus {
           background: #17a185;
@@ -23,9 +24,7 @@ function Logo() {
           font-weight: 700;
           transition: all 0.3s ease-in-out 0s;
         }
-      `}</style> */}
-    </>
+      `}</style>
+    </React.Fragment>
   );
 }
-
-export default Logo;

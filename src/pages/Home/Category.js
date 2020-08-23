@@ -1,6 +1,7 @@
 import React from 'react';
 
-function Category({ name, img, to, alt }) {
+// eslint-disable-next-line react/prop-types
+export default function Category({ name, img, to, alt }) {
   return (
     <div className="card product">
       <img className="card-img-top" src={img} alt={alt} />
@@ -12,5 +13,3 @@ function Category({ name, img, to, alt }) {
     </div>
   );
 }
-
-export default Category;

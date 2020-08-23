@@ -1,9 +1,9 @@
 import React from 'react';
-import worldMap from '@/assets/images/world_map.png';
+import worldMapImg from '../../assets/images/world_map.png';
 
-function Footer() {
+export default function Footer() {
   return (
-    <>
+    <React.Fragment>
       <footer className="flex-fill bg-light contact p-4">
         <div className="container">
           <div className="row copy mb-4 mt-3">
@@ -88,13 +88,11 @@ function Footer() {
           font-size: 13px;
         }
         .contact {
-          background-image: url(${worldMap});
+          background-image: url(${worldMapImg});
           background-position: 50% 50%;
           background-repeat: no-repeat;
         }
       `}</style>
-    </>
+    </React.Fragment>
   );
 }
-
-export default Footer;

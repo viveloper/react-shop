@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { NavLink } from 'react-router-dom';
 
+// eslint-disable-next-line react/display-name
 const LinkItem = React.forwardRef((props, ref) => {
   const handleClick = (e) => {
     e.preventDefault();
@@ -10,13 +11,18 @@ const LinkItem = React.forwardRef((props, ref) => {
     props.navigate();
   };
   return (
-    <>
-      <li className={classNames('nav-item', props.className)}>
-        <a ref={ref} href="" className="nav-link" onClick={handleClick}>
-          {props.text}
-        </a>
-      </li>
+    <li className={classNames('nav-item', props.className)}>
+      <a ref={ref} href="" className="nav-link" onClick={handleClick}>
+        {props.text}
+      </a>
+    </li>
+  );
+});
 
+const NaviItem = ({ to, text }) => {
+  return (
+    <React.Fragment>
+      <NavLink to={to} activeClassName="active" text={text} exact component={LinkItem}></NavLink>
       <style jsx>
         {`
           :global(.nav-item > .nav-link) {
@@ -44,18 +50,9 @@ const LinkItem = React.forwardRef((props, ref) => {
           }
         `}
       </style>
-    </>
+    </React.Fragment>
   );
-});
-
-function NaviItem({ to, text }) {
-  return (
-    <>
-      <NavLink to={to} exact activeClassName="active" text={text} component={LinkItem} />
-    </>
-  );
-}
-
+};
 NaviItem.propTypes = {
   to: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
@@ -63,5 +60,4 @@ NaviItem.propTypes = {
   action: PropTypes.func,
   show: PropTypes.bool,
 };
-
 export default NaviItem;

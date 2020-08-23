@@ -1,61 +1,89 @@
-import React, { useState } from 'react';
-import { Route, useHistory } from 'react-router-dom';
+/* eslint-disable react/prop-types */
+import React from 'react';
+import { Route } from 'react-router-dom';
 import Drawer from '@/components/Drawer';
-import Cart from '@/pages/Home/Cart';
-import Navigation from '@/components/Navigation';
-import Footer from '@/pages/Home/Footer';
+import Cart from './Cart';
+import Footer from './Footer';
+import Navitation from '@/components/Navigation';
 
-function PublicLayout({ theme, component: Component, ...rest }) {
-  const [isShopingCartOpen, setIsShopingCartOpen] = useState(false);
-  const [cartItems, setCartItems] = useState([]);
+export default class PublicLayout extends React.Component {
+  state = {
+    isShopingCartOpen: false,
+    cartItems: [],
+  };
 
-  const history = useHistory();
+  handleCartClicked = () =>
+    this.setState({
+      isShopingCartOpen: !this.state.isShopingCartOpen,
+    });
 
-  const addCartItem = (product) => {
-    if (cartItems.find((item) => item.id === product.id)) {
-      setCartItems(cartItems.map((item) => (item.id === product.id ? { ...item, count: item.count + 1 } : item)));
+  handleCheckout = ({ items, total }) => {
+    console.log(`Checkout ${JSON.stringify(items)} total: ${total}`);
+  };
+
+  handleCartClosed = () => {
+    this.setState({ isShopingCartOpen: false });
+  };
+
+  addCartItem = (product, qty) => {
+    const found = this.state.cartItems.find((v) => v.product.id === product.id);
+    if (found) {
+      if (qty) {
+        found.count += qty;
+      } else {
+        found.count += 1;
+      }
+      this.setState({
+        cartItems: [...this.state.cartItems],
+      });
     } else {
-      setCartItems([...cartItems, { ...product, count: 1 }]);
+      this.setState({
+        cartItems: [...this.state.cartItems, { product, count: qty ? qty : 1 }],
+      });
     }
   };
 
-  const handleCartClick = () => {
-    setIsShopingCartOpen(!isShopingCartOpen);
-  };
-
-  const handleCartItemRemoveClick = (id) => {
-    setCartItems(cartItems.filter((item) => item.id !== id));
-  };
-
-  const handleCheckout = ({ items, totalPrice }) => {
-    console.log(`Checkout ${JSON.stringify(items)} total: ${totalPrice}`);
-    if (items.length === 0) {
-      alert('물건이 없습니다.');
-      return;
+  handleCartItemRemoved = ({ id }) => {
+    const foudnItem = this.state.cartItems.find((v) => v.product.id === id);
+    if (foudnItem == null) {
+      throw new Error(`Can not find the item (${id})`);
     }
-    history.push('/checkout');
+    if (foudnItem && foudnItem.counts > 1) {
+      foudnItem.counts -= 1;
+    } else {
+      const index = this.state.cartItems.indexOf(foudnItem);
+      this.state.cartItems.splice(index, 1);
+    }
+    this.setState({
+      cartItems: [...this.state.cartItems],
+    });
   };
 
-  return (
-    <Route
-      {...rest}
-      render={(matchProps) => (
-        <>
-          <Drawer isOpen={isShopingCartOpen}>
-            <Cart
-              items={cartItems}
-              onClose={handleCartClick}
-              onRemoveClick={handleCartItemRemoveClick}
-              onCheckout={handleCheckout}
+  render() {
+    const { component: Component, ...rest } = this.props;
+
+    return (
+      <Route
+        {...rest}
+        render={(matchProps) => (
+          <React.Fragment>
+            <Drawer
+              isOpen={this.state.isShopingCartOpen}
+              component={Cart}
+              items={this.state.cartItems}
+              onItemRemove={this.handleCartItemRemoved}
+              onCheckout={this.handleCheckout}
+              onClose={this.handleCartClosed}
             />
-          </Drawer>
-          <Navigation theme={theme} cartItemCounts={cartItems.length} onCartClick={handleCartClick} />
-          <Component {...matchProps} onAddCartItem={addCartItem} />
-          <Footer />
-        </>
-      )}
-    />
-  );
+            <Navitation
+              onCartClick={this.handleCartClicked}
+              cartItemCounts={this.state.cartItems.length}
+              stickyPaths={['/products', '/products/.*', '/checkout']}
+            />
+            <Component {...matchProps} onAddCartItem={this.addCartItem} />
+            <Footer />
+          </React.Fragment>
+        )}></Route>
+    );
+  }
 }
-
-export default PublicLayout;

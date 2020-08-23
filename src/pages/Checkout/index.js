@@ -1,337 +1,148 @@
-import React, { useState, useMemo } from 'react';
+/* eslint-disable react/prop-types */
+import React, { PureComponent, createRef } from 'react';
 import Breadcrumb from '@/components/Breadcrumb';
-import CartItem from '@/pages/Home/CartItem';
+import ShippingForm from './ShippingForm';
 import allImage from '@/assets/images/products/*.jpeg';
+import PaymentForm from './PaymentForm';
 
-function Checkout() {
-  // [ToDo : Fetch Redux Store]
-  const [cartItems, setCartItems] = useState([
-    {
-      id: '2',
-      name: 'React Product 2',
-      price: 13000,
-      info: 'Lorem ipsum dolor sit amet',
-      avg_stars: 4,
-      total_reviews: 5,
-      count: 2,
-    },
-    {
-      id: '3',
-      name: 'React Product 3',
-      price: 4000,
-      info: 'Lorem ipsum dolor sit amet',
-      avg_stars: 2,
-      total_reviews: 10,
-      count: 1,
-    },
-  ]);
+const CartItem = ({ cartItem, onItemRemove }) => {
+  const img = allImage[`item${cartItem.product.id}`];
+  return (
+    <li key={cartItem.product.id} className="cart-item">
+      <a href="#remove" className="navy-link remove-item">
+        ×
+      </a>
+      <a href="./product-detail.html">
+        <img width="250" height="250" src={img} alt={cartItem.product.name} className="p-3" />
+        {cartItem.product.name}
+      </a>
+      <span className="quantity">
+        {' '}
+        {cartItem.count} × <span className="price">{cartItem.product.price}</span>{' '}
+      </span>
+    </li>
+  );
+};
 
-  const initialInputsState = {
-    email: '',
-    phoneNumber: '',
-    firstName: '',
-    lastName: '',
-    city: '',
-    state: '',
-    street: '',
-    postCode: '',
-    orderNote: '',
-    cardNumber: '',
-    fullName: '',
-    expDate: '',
-    cvc: '',
+export default class Checkout extends PureComponent {
+  breadcrumbLinks = [{ to: '/home', name: 'Home' }, { name: 'Checkout' }];
+  shippingFormRef = createRef(null);
+  paymentFormRef = createRef(null);
+
+  state = {
+    cartItems: [
+      {
+        product: {
+          id: '3',
+          name: 'React Product 3',
+          price: 4000,
+          info: 'Lorem ipsum dolor sit amet',
+          avg_stars: 2,
+          total_reviews: 10,
+          category: { id: 5, name: 'Clothes' },
+        },
+        count: 3,
+      },
+    ],
   };
 
-  const [inputs, setInputs] = useState(initialInputsState);
-
-  const totalPrice = useMemo(() => cartItems.reduce((total, item) => total + item.price * item.count, 0), [cartItems]);
-
-  const handleInputChange = (e) => {
-    setInputs({
-      ...inputs,
-      [e.target.name]: e.target.value,
+  handleOrderComplete = (event) => {
+    event.preventDefault();
+    const shippingFormData = new FormData(this.shippingFormRef.current);
+    const paymentFormData = new FormData(this.paymentFormRef.current);
+    const rawFormData = Object.assign(
+      {},
+      Object.fromEntries(shippingFormData.entries()),
+      Object.fromEntries(paymentFormData.entries())
+    );
+    console.log({
+      customer: {
+        email: rawFormData.email,
+        phoneNumber: rawFormData.phoneNumber,
+        firstName: rawFormData.firstName,
+        lastName: rawFormData.lastName,
+      },
+      items: this.state.cartItems,
+      orderNote: rawFormData.orderNote,
+      address: {
+        city: rawFormData.city,
+        state: rawFormData.state,
+        street: rawFormData.street,
+        postCode: rawFormData.postCode,
+      },
+      payment: {
+        cardNumber: rawFormData.cardNumber,
+        fullName: rawFormData.fullName,
+        expDate: rawFormData.expDate,
+        cvc: rawFormData.cvc,
+      },
+      totalPrice: this.total,
     });
   };
 
-  const handleRemoveItemClick = (id) => {
-    setCartItems(cartItems.filter((item) => item.id !== id));
-  };
+  get total() {
+    return this.state.cartItems.reduce((acc, o) => acc + o.count * o.product.price, 0);
+  }
 
-  const handleOrder = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    const order = {
-      customer: {
-        email: inputs.email,
-        phoneNumber: inputs.phoneNumber,
-        firstName: inputs.firstName,
-        lastName: inputs.lastName,
-      },
-      items: cartItems.map((item) => ({
-        product: item,
-        counts: item.count,
-      })),
-      orderNote: inputs.orderNote,
-      address: {
-        city: inputs.city,
-        state: inputs.state,
-        street: inputs.street,
-        postCode: inputs.postCode,
-      },
-      payment: {
-        cardNumber: inputs.cardNumber,
-        fullName: inputs.fullName,
-        expDate: inputs.expDate,
-        cvc: inputs.cvc,
-      },
-      totalPrice: totalPrice,
-    };
-    console.log(order);
-  };
+  render() {
+    const { cartItems } = this.state;
 
-  return (
-    <>
-      <main>
-        <Breadcrumb pathName="checkout" />
+    return (
+      <React.Fragment>
+        <Breadcrumb title="Checkout" links={this.breadcrumbLinks} />
         <section className="checkout-section container mb-5">
           <div className="row">
             <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 p-xs">
               <h2 className="m-0">Shipping address</h2>
-              <form action="" className="form-horizontal mt-4" role="form">
-                <div className="form-group">
-                  <div className="row">
-                    <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                      <label className="control-label">Customer Info</label>
-                    </div>
-                    <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                      <input
-                        type="text"
-                        name="firstName"
-                        className="form-control"
-                        placeholder="Firtst Name"
-                        value={inputs.firstName}
-                        onChange={handleInputChange}
-                      />
-                    </div>
-                    <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                      <input
-                        type="text"
-                        name="lastName"
-                        className="form-control"
-                        placeholder="Last Name"
-                        value={inputs.lastName}
-                        onChange={handleInputChange}
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="form-group">
-                  <input
-                    type="email"
-                    name="email"
-                    className="form-control"
-                    placeholder="Email"
-                    value={inputs.email}
-                    onChange={handleInputChange}
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    name="phoneNumber"
-                    className="form-control"
-                    placeholder="Phone Number"
-                    value={inputs.phoneNumber}
-                    onChange={handleInputChange}
-                  />
-                </div>
-                <div className="form-group">
-                  <div className="row">
-                    <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                      <label className="control-label">Address</label>
-                    </div>
-                    <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                      <input
-                        type="text"
-                        name="state"
-                        className="form-control"
-                        placeholder="State"
-                        value={inputs.state}
-                        onChange={handleInputChange}
-                      />
-                    </div>
-                    <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                      <input
-                        type="text"
-                        name="city"
-                        className="form-control"
-                        placeholder="City"
-                        value={inputs.city}
-                        onChange={handleInputChange}
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="form-group">
-                  <div className="row">
-                    <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                      <input
-                        type="text"
-                        name="street"
-                        className="form-control"
-                        placeholder="Street Address"
-                        value={inputs.street}
-                        onChange={handleInputChange}
-                      />
-                    </div>
-                    <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                      <input
-                        type="text"
-                        name="postCode"
-                        className="form-control"
-                        placeholder="Postal Code"
-                        value={inputs.postCode}
-                        onChange={handleInputChange}
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="form-group">
-                  <label htmlFor="ShippingMemo" className="control-label">
-                    Order Notes
-                  </label>
-                  <textarea
-                    className="form-control"
-                    name="orderNote"
-                    id="ShippingMemo"
-                    cols="20"
-                    rows="5"
-                    placeholder="Note your order"
-                    value={inputs.orderNote}
-                    onChange={handleInputChange}></textarea>
-                </div>
-              </form>
+              <ShippingForm ref={this.shippingFormRef} />
             </div>
 
             <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 p-3 order-panel">
               <h2 className="m-0">YOUR ORDER</h2>
-              <ul className="list-unstyled mb-4">
-                {cartItems.map((item) => (
-                  <CartItem
-                    key={item.id}
-                    id={item.id}
-                    name={item.name}
-                    count={item.count}
-                    price={item.price}
-                    onRemoveClick={handleRemoveItemClick}
-                  />
-                ))}
-              </ul>
-
-              <div className="navy-line-full"></div>
+              <ul className="list-unstyled mb-4">{cartItems.map((cartItem) => CartItem({ cartItem }))}</ul>
+              <div className="navy-line-full" />
               <div className="total-section px-3 py-4">
                 <span>TOTAL:</span>
-                <span className="float-right m-0 price">{totalPrice}</span>
+                <span className="float-right m-0 price">{this.total}</span>
               </div>
               <h2 className="mt-5">PAYMENT</h2>
-              <form action="" className="form-horizontal" role="form">
-                <div className="form-group">
-                  <label className="control-label">Card Number</label>
-                  <input
-                    className="form-control"
-                    autoComplete="cc-number"
-                    name="cardNumber"
-                    type="text"
-                    placeholder="**** **** **** ****"
-                    value={inputs.cardNumber}
-                    onChange={handleInputChange}
-                  />
-                </div>
-                <div className="form-group">
-                  <label className="control-label">Full Name</label>
-                  <input
-                    className="form-control"
-                    autoComplete="cc-name"
-                    name="fullName"
-                    type="text"
-                    placeholder="NAME"
-                    autoComplete="cc-name"
-                    value={inputs.fullName}
-                    onChange={handleInputChange}
-                  />
-                </div>
-                <div className="form-group">
-                  <div className="row">
-                    <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                      <label className="control-label">MM/YYYY</label>
-                      <input
-                        className="form-control"
-                        autoComplete="cc-name"
-                        name="expDate"
-                        type="text"
-                        placeholder="01/2019"
-                        autoComplete="cc-exp"
-                        value={inputs.expDate}
-                        onChange={handleInputChange}
-                      />
-                    </div>
-                    <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                      <label className="control-label">CVC</label>
-                      <input
-                        className="form-control"
-                        autoComplete="cc-name"
-                        name="cvc"
-                        type="text"
-                        placeholder="***"
-                        autoComplete="cc-csc"
-                        value={inputs.cvc}
-                        onChange={handleInputChange}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </form>
+              <PaymentForm ref={this.paymentFormRef} />
               <div className="mt-5">
                 <a
+                  onClick={this.handleOrderComplete}
                   className="btn btn-lg btn-primary checkout-btn"
                   href="./checkout.html"
-                  role="button"
-                  onClick={handleOrder}>
+                  role="button">
                   Complete Order
                 </a>
               </div>
             </div>
           </div>
         </section>
-      </main>
-
-      <style jsx>{`
-        /* checkout */
-        .checkout-section .form-horizontal .form-group {
-          margin: 0;
-          margin-bottom: 8px;
-        }
-        .order-panel {
-          border: 1px solid #ddd;
-          min-height: 500px;
-        }
-        .order-panel .total-section span {
-          font-size: 18px;
-          font-weight: 500;
-        }
-        .order-panel .checkout-btn {
-          width: 100%;
-        }
-
-        .checkout-section .form-group label {
-          display: inline-block;
-          max-width: 100%;
-          margin-bottom: 5px;
-          font-weight: 700;
-        }
-      `}</style>
-    </>
-  );
+        <style jsx>{`
+          .checkout-section .form-horizontal .form-group {
+            margin: 0;
+            margin-bottom: 8px;
+          }
+          .order-panel {
+            border: 1px solid #ddd;
+            min-height: 500px;
+          }
+          .order-panel .total-section span {
+            font-size: 18px;
+            font-weight: 500;
+          }
+          .order-panel .checkout-btn {
+            width: 100%;
+          }
+          .checkout-section :global(.form-group label) {
+            display: inline-block;
+            max-width: 100%;
+            margin-bottom: 5px;
+            font-weight: 700;
+          }
+        `}</style>
+      </React.Fragment>
+    );
+  }
 }
-
-export default Checkout;

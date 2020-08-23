@@ -1,14 +1,15 @@
 import React from 'react';
 
-function TopBar({ cartItemCounts, onCartClick }) {
-  const handleCartBtnClick = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
+// eslint-disable-next-line react/prop-types
+export default function TopBar({ onCartClick, cartItemCounts }) {
+  const handleCartBtnClick = (evt) => {
+    evt.preventDefault();
+    evt.stopPropagation();
     onCartClick();
   };
 
   return (
-    <>
+    <React.Fragment>
       <div className="flex-fill top-bar bg-dark">
         <div className="container">
           <ul className="flex-fill nav justify-content-end">
@@ -58,8 +59,6 @@ function TopBar({ cartItemCounts, onCartClick }) {
           padding: 0 10px;
         }
       `}</style>
-    </>
+    </React.Fragment>
   );
 }
-
-export default TopBar;

@@ -1,28 +1,21 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
-import allImage from '@/assets/images/products/*.jpeg';
-import Rating from './Rating';
 import PropTypes from 'prop-types';
+import allImage from '../assets/images/products/*.jpeg';
+import Rating from './Rating';
+import { Link } from 'react-router-dom';
 
-export default function Product({ product, onCartClick }) {
-  const history = useHistory();
+function Product({ id, name, price, info, avg_stars, total_reviews, onCartBtnClick = () => {} }) {
+  const img = allImage[`item${id}`];
 
-  const img = allImage[`item${product.id}`];
-
-  const handleCartClick = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    onCartClick(product);
-  };
-
-  const handleDetailClick = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    history.push(`/products/${product.id}`);
+  const handleCartBtnClick = (evt) => {
+    evt.preventDefault();
+    evt.stopPropagation();
+    onCartBtnClick({ id, name, price, info, avg_stars, total_reviews });
+    return false;
   };
 
   return (
-    <>
+    <React.Fragment>
       <div className="product card">
         <div className="img-container">
           <img className="card-img-top" src={img} alt="" />
@@ -35,31 +28,31 @@ export default function Product({ product, onCartClick }) {
                   </a>
                 </li>
                 <li className="list-inline-item">
-                  <a href="" className="btn btn-light" onClick={handleCartClick}>
+                  <a href="" onClick={handleCartBtnClick} className="btn btn-light">
                     <i className="fas fa-shopping-cart"></i>
                   </a>
                 </li>
                 <li className="list-inline-item">
-                  <a href="" className="btn btn-light" onClick={handleDetailClick}>
+                  <Link to={`/products/${id}`} className="btn btn-light">
                     <i className="fas fa-eye"></i>
-                  </a>
+                  </Link>
                 </li>
               </ul>
               <div className="text-warning">
-                <Rating total={5} value={product.avg_stars} />
-                <span className="text-white">({product.total_reviews})</span>
+                <Rating total={5} value={avg_stars}></Rating>
+                <span className="text-white">({total_reviews})</span>
               </div>
             </div>
           </div>
         </div>
         <div className="card-body">
           <div className="d-flex justify-content-between align-items-center">
-            <a href="" className="item-title" href="">
-              {product.name}
+            <a href="" className="item-title">
+              {price}
             </a>
-            <h4 className="price pull-right">{product.price}</h4>
+            <h4 className="price pull-right">{name}</h4>
           </div>
-          <p className="card-text">{product.info}</p>
+          <p className="card-text">{info}</p>
         </div>
       </div>
       <style jsx global>{`
@@ -110,18 +103,18 @@ export default function Product({ product, onCartClick }) {
           line-height: 2;
         }
       `}</style>
-    </>
+    </React.Fragment>
   );
 }
 
 Product.propTypes = {
-  product: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    info: PropTypes.string.isRequired,
-    avg_stars: PropTypes.number.isRequired,
-    total_reviews: PropTypes.number.isRequired,
-  }),
-  onCartClick: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  info: PropTypes.string.isRequired,
+  avg_stars: PropTypes.number.isRequired,
+  total_reviews: PropTypes.number.isRequired,
+  onCartBtnClick: PropTypes.func,
 };
+
+export default Product;
