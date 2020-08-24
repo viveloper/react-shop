@@ -2,60 +2,21 @@ import React from 'react';
 import Breadcrumb from '@/components/Breadcrumb';
 import Product from '@/components/Product';
 import BootstrapSlider from '@/components/BootstrapSlider';
+import { connect } from 'react-redux';
+import { selectProducts, selectCategories, getProducts } from '@/data/productList';
 
-export default class ProductList extends React.Component {
+class ProductList extends React.Component {
   breadcrumbLinks = [{ to: '/home', name: 'Home' }, { name: 'Product List' }];
 
   state = {
-    categories: [
-      { id: '1', name: 'Shirts', counts: 3 },
-      { id: '2', name: 'Dolls', counts: 2 },
-      { id: '3', name: 'Notes', counts: 5 },
-      { id: '4', name: 'Watches', counts: 1 },
-      { id: '5', name: 'Clothes', counts: 10 },
-      { id: '6', name: 'Shoes', counts: 4 },
-      { id: '7', name: 'GLoves', counts: 10 },
-    ],
-    products: [
-      {
-        id: '1',
-        name: 'React Note',
-        price: 2000,
-        info: 'Lorem ipsum dolor sit amet',
-        avg_stars: 4,
-        total_reviews: 200,
-        category: 3,
-      },
-      {
-        id: '2',
-        name: 'React Product 2',
-        price: 13000,
-        info: 'Lorem ipsum dolor sit amet',
-        avg_stars: 4,
-        total_reviews: 5,
-        category: 4,
-      },
-      {
-        id: '3',
-        name: 'React Product 3',
-        price: 4000,
-        info: 'Lorem ipsum dolor sit amet',
-        avg_stars: 2,
-        total_reviews: 10,
-        category: 2,
-      },
-      {
-        id: '4',
-        name: 'React Product 4',
-        price: 5000,
-        info: 'Lorem ipsum dolor sit amet',
-        avg_stars: 1,
-        total_reviews: 10,
-        category: 5,
-      },
-    ],
-    priceFilter: [250, 450],
+    priceFilter: [1, 30],
+    selectedCategory: 'all',
+    sortType: '0',
   };
+
+  componentDidMount() {
+    this.props.fetchProducts();
+  }
 
   handleOnSlide = (values) => {
     this.setState({
@@ -63,7 +24,45 @@ export default class ProductList extends React.Component {
     });
   };
 
+  handleCategoryClick = (id) => {
+    this.setState({
+      selectedCategory: id,
+    });
+  };
+
+  handleSortTypeChange = (e) => {
+    this.setState({
+      sortType: e.target.value,
+    });
+  };
+
+  getFilteredProducts(products) {
+    const [min, max] = this.state.priceFilter;
+
+    const filteredProducts = (this.state.selectedCategory === 'all'
+      ? [...products]
+      : products.filter((product) => product.category === parseInt(this.state.selectedCategory))
+    ).filter((product) => product.price >= min * 1000 && product.price <= max * 1000);
+
+    filteredProducts.sort((a, b) => {
+      if (this.state.sortType === '0') {
+        return parseInt(a.id) - parseInt(b.id);
+      } else if (this.state.sortType === '1') {
+        return b.total_reviews - a.total_reviews;
+      } else if (this.state.sortType === '2') {
+        return b.avg_stars - a.avg_stars;
+      } else if (this.state.sortType === '3') {
+        return parseInt(b.id) - parseInt(a.id);
+      } else if (this.state.sortType === '4') {
+        return b.price - a.price;
+      }
+    });
+
+    return filteredProducts;
+  }
+
   render() {
+    const filteredProducts = this.getFilteredProducts(this.props.products);
     return (
       <React.Fragment>
         <main className="gray-bg">
@@ -74,10 +73,11 @@ export default class ProductList extends React.Component {
                 <div className="product-category-card card mb-3">
                   <div className="card-header">Product categories</div>
                   <div className="card-body list-group">
-                    {this.state.categories.map((c) => (
+                    {this.props.categories.map((c) => (
                       <a
                         key={c.id}
-                        className="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                        className="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+                        onClick={() => this.handleCategoryClick(c.id)}>
                         {c.name} <span className="badge badge-secondary badge-pill">{c.counts}</span>
                       </a>
                     ))}
@@ -87,9 +87,9 @@ export default class ProductList extends React.Component {
                   <div className="card-header">Filter by Price</div>
                   <div className="card-body">
                     <BootstrapSlider
-                      min={10}
-                      max={1000}
-                      step={5}
+                      min={1}
+                      max={30}
+                      step={1}
                       value={this.state.priceFilter}
                       onSlide={this.handleOnSlide}
                     />
@@ -107,17 +107,22 @@ export default class ProductList extends React.Component {
               <div className="col-xs-12 col-sm-9 col-md-9 col-lg-9">
                 <div className="row filter-area mb-3">
                   <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <select name="guiest_id1" id="guiest_id1" className="select-drop">
+                    <select
+                      name="guiest_id1"
+                      id="guiest_id1"
+                      className="select-drop"
+                      onChange={this.handleSortTypeChange}
+                      value={this.state.sortType}>
                       <option value="0">Default sorting</option>
                       <option value="1">Sort by popularity</option>
                       <option value="2">Sort by rating</option>
                       <option value="3">Sort by newness</option>
-                      <option value="3">Sort by price</option>
+                      <option value="4">Sort by price</option>
                     </select>
                   </div>
                 </div>
                 <div className="row items">
-                  {this.state.products.map((p) => (
+                  {filteredProducts.map((p) => (
                     <div key={p.id} className="col-xs-6 col-sm-6 col-md-4 col-lg-4">
                       <Product {...p} onCartBtnClick={this.props.onAddCartItem} />
                     </div>
@@ -160,3 +165,14 @@ export default class ProductList extends React.Component {
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  categories: selectCategories(state),
+  products: selectProducts(state),
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  fetchProducts: () => dispatch(getProducts()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductList);
