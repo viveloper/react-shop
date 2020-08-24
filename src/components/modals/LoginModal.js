@@ -1,10 +1,18 @@
 import React from 'react';
-import Modal from 'react-bootstrap/Modal';
 import { useDispatch } from 'react-redux';
+import Modal from 'react-bootstrap/Modal';
 import useFocusEffect from '@/hooks/useFocusEffect';
 import { showModal, closeModal } from '@/data/modal';
+import { Form, Formik, Field, ErrorMessage } from 'formik';
+import { composeValidators, required, validEmail } from '@/validators';
+import Alert from 'react-bootstrap/Alert';
 
-export default function LoginModal({ show, onHide }) {
+const INITIAL_VALUES = {
+  email: '',
+  password: '',
+};
+
+export default function LoginModal({ show }) {
   const dispatch = useDispatch();
   const handleHide = () => {
     dispatch(closeModal());
@@ -14,6 +22,10 @@ export default function LoginModal({ show, onHide }) {
     event.preventDefault();
     dispatch(closeModal());
     dispatch(showModal('SignupModal'));
+  };
+
+  const handleSubmit = (values) => {
+    console.log(values);
   };
 
   const ref = useFocusEffect();
@@ -26,46 +38,60 @@ export default function LoginModal({ show, onHide }) {
             <span aria-hidden="true">&times;</span>
           </button>
         </Modal.Header>
-        <form action="" method="POST">
-          <div className="modal-body p-5">
-            <h4 className="modal-title mb-5">Login</h4>
-            <div className="form-group">
-              <label htmlFor="login-email">EMAIL</label>
-              <input
-                ref={ref}
-                type="text"
-                id="login-email"
-                name="email"
-                className="form-control email"
-                placeholder="example@gmail.com"
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="login-password">PASSWORD</label>
-              <input
-                type="password"
-                id="login-password"
-                name="email"
-                className="form-control email"
-                placeholder="example@gmail.com"
-              />
-              <a href="" className="navy-link">
-                Login Lost your password?
-              </a>
-            </div>
-          </div>
-          <div className="modal-footer flex-column p-0">
-            <button type="button" className="btn btn-primary align-self-end mr-5">
-              Login
-            </button>
-            <div className="signup-today text-center align-self-stretch flex-fill m-0 mt-3">
-              <p>Don’t have an account?</p>
-              <a onClick={handleSignupClick} className="navy-link">
-                Sign Up Today
-              </a>
-            </div>
-          </div>
-        </form>
+        <Formik initialValues={INITIAL_VALUES} onSubmit={handleSubmit}>
+          {({ errors }) => (
+            <Form>
+              <div className="modal-body p-5">
+                <h4 className="modal-title mb-5">Login</h4>
+                <div className="form-group">
+                  <label htmlFor="login-email">EMAIL</label>
+                  <Field
+                    innerRef={ref}
+                    validate={composeValidators(required, validEmail)}
+                    name="email"
+                    type="email"
+                    className="form-control email"
+                    placeholder="Email"
+                  />
+                  {errors.email && (
+                    <Alert className="mt-3" variant="danger">
+                      {errors.email}
+                    </Alert>
+                  )}
+                </div>
+                <div className="form-group">
+                  <label htmlFor="login-password">PASSWORD</label>
+                  <Field
+                    id="login-password"
+                    name="password"
+                    type="password"
+                    className="form-control email"
+                    validate={composeValidators(required)}
+                  />
+                  {errors.password && (
+                    <Alert className="mt-3" variant="danger">
+                      {errors.password}
+                    </Alert>
+                  )}
+                  <a href="" className="navy-link">
+                    Login Lost your password?
+                  </a>
+                </div>
+              </div>
+              <div className="modal-footer flex-column p-0">
+                <button type="submit" className="btn btn-primary align-self-end mr-5">
+                  Login
+                </button>
+                <div className="signup-today text-center align-self-stretch flex-fill m-0 mt-3">
+                  <p>Don’t have an account?</p>
+                  <a onClick={handleSignupClick} className="navy-link">
+                    Sign Up Today
+                  </a>
+                </div>
+              </div>
+            </Form>
+          )}
+        </Formik>
       </Modal>
       <style jsx global>{`
         .login-signup label {
