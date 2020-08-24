@@ -124,7 +124,7 @@ class ProductList extends React.Component {
                 <div className="row items">
                   {filteredProducts.map((p) => (
                     <div key={p.id} className="col-xs-6 col-sm-6 col-md-4 col-lg-4">
-                      <Product {...p} onCartBtnClick={this.props.onAddCartItem} />
+                      <Product {...p} />
                     </div>
                   ))}
                 </div>

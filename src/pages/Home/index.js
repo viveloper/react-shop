@@ -19,10 +19,6 @@ export default function Home() {
     dispatch(getNewArrivals());
   }, []);
 
-  const handleProductCartClicked = (product) => {
-    this.props.onAddCartItem(product);
-  };
-
   return (
     <main>
       <Banner />
@@ -37,7 +33,7 @@ export default function Home() {
         <div className="row items">
           {newArrivals.map((product) => (
             <div key={product.id} className="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-              <Product {...product} onCartBtnClick={handleProductCartClicked} />
+              <Product {...product} />
             </div>
           ))}
         </div>

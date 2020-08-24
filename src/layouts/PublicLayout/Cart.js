@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectCartItems, getTotal } from '@/data/cart';
 import { closeCart, removeCartItem } from '@/data/cart';
 
-const CartItem = memo(function C({ id, name, price, count, onItemRemove }) {
+const CartItem = memo(function C({ id, name, price, count }) {
   const dispatch = useDispatch();
 
   const handleItemBtnClicked = (evt) => {
@@ -69,7 +69,6 @@ export default function Cart() {
                 name={item.product.name}
                 price={item.product.price}
                 count={item.count}
-                onItemRemove={onItemRemove}
               />
             ))}
           </ul>

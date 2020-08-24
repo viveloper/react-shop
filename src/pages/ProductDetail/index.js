@@ -6,8 +6,11 @@ import Product from '@/components/Product';
 import ProductTabs from './ProductTabs';
 import QuantitySelect from './QuantitySelect';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { selectProducts, getProducts } from '@/data/productList';
+import { addCartItem } from '@/data/cart';
 
-export default class ProductDetail extends React.Component {
+class ProductDetail extends React.Component {
   breadcrumbLinks = [
     { to: '/home', name: 'Home' },
     { to: '/products', name: 'Product List' },
@@ -15,18 +18,6 @@ export default class ProductDetail extends React.Component {
   ];
   state = {
     selectedQty: 1,
-    product: {
-      id: '3',
-      name: 'React Product 3',
-      price: 4000,
-      info: 'Lorem ipsum dolor sit amet',
-      avg_stars: 2,
-      total_reviews: 10,
-      category: {
-        id: 5,
-        name: 'Clothes',
-      },
-    },
     relatedProducts: [
       {
         id: '3',
@@ -55,9 +46,15 @@ export default class ProductDetail extends React.Component {
     ],
   };
 
+  componentDidMount() {
+    if (!this.props.product) {
+      this.props.fetchProducts();
+    }
+  }
+
   handleAddCartClicked = (event) => {
     event.preventDefault();
-    this.props.onAddCartItem(this.state.product, Number(this.state.selectedQty));
+    this.props.onAddCartItem(this.props.product, Number(this.state.selectedQty));
   };
 
   handleQtyChange = (value) => {
@@ -67,8 +64,7 @@ export default class ProductDetail extends React.Component {
   };
 
   render() {
-    const { match } = this.props;
-    const { product } = this.state;
+    const { match, product } = this.props;
     const id = match.params.id;
     const img = allImage[`item${id}`];
 
@@ -81,27 +77,29 @@ export default class ProductDetail extends React.Component {
               <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div className="media">
                   <img src={img} alt="Image" />
-                  <div className="media-body">
-                    <h2 className="mt-0">{product.name}</h2>
-                    <h3>{product.price}</h3>
-                    <p className="mb-2">
-                      <span>{product.info}</span>
-                      <br />
-                      <span className="product-category mt-5">
-                        Category:{' '}
-                        <Link className="navy-link" to={`/products?category=${product.category.name}`}>
-                          {product.category.name}
-                        </Link>
-                      </span>
-                    </p>
-                    <div className="btn-area mb-5">
-                      <QuantitySelect defaultQty={1} onQtyChange={this.handleQtyChange} />
-                      <a onClick={this.handleAddCartClicked} className="btn btn-primary btn-block">
-                        Add to cart <i className="fa fa-angle-right" aria-hidden="true"></i>
-                      </a>
+                  {product && (
+                    <div className="media-body">
+                      <h2 className="mt-0">{product.name}</h2>
+                      <h3>{product.price}</h3>
+                      <p className="mb-2">
+                        <span>{product.info}</span>
+                        <br />
+                        <span className="product-category mt-5">
+                          Category:{' '}
+                          <Link className="navy-link" to={`/products?category=${product.category.name}`}>
+                            {product.category.name}
+                          </Link>
+                        </span>
+                      </p>
+                      <div className="btn-area mb-5">
+                        <QuantitySelect defaultQty={1} onQtyChange={this.handleQtyChange} />
+                        <a onClick={this.handleAddCartClicked} className="btn btn-primary btn-block">
+                          Add to cart <i className="fa fa-angle-right" aria-hidden="true"></i>
+                        </a>
+                      </div>
+                      <ProductTabs info={product.info} stars={product.avg_stars} />
                     </div>
-                    <ProductTabs info={product.info} stars={product.avg_stars} />
-                  </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -116,7 +114,7 @@ export default class ProductDetail extends React.Component {
             <div className="row items">
               {this.state.relatedProducts.map((p) => (
                 <div key={p.id} className="col-xs-6 col-sm-6 col-md-4 col-lg-4">
-                  <Product {...p} onCartBtnClick={this.props.onAddCartItem} />
+                  <Product {...p} />
                 </div>
               ))}
             </div>
@@ -229,3 +227,14 @@ export default class ProductDetail extends React.Component {
     );
   }
 }
+
+const mapStateToProps = (state, props) => ({
+  product: selectProducts(state).find((product) => product.id === props.match.params.id),
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  fetchProducts: () => dispatch(getProducts()),
+  onAddCartItem: (product, qty) => dispatch(addCartItem(product, qty)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductDetail);
