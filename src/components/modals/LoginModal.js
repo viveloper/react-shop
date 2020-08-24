@@ -34,7 +34,7 @@ export default function LoginModal({ show }) {
     <React.Fragment>
       <Modal show={show} onHide={handleHide} className="login-signup">
         <Modal.Header>
-          <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" onClick={handleHide} className="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </Modal.Header>

@@ -14,7 +14,7 @@ export const showModal = (type, props = {}) => ({
 });
 
 // reducer
-const initialState = [{ type: 'LoginModal' }];
+const initialState = [];
 
 const modals = (state = initialState, { type, payload }) => {
   switch (type) {
