@@ -3,7 +3,8 @@ import Breadcrumb from '@/components/Breadcrumb';
 import Product from '@/components/Product';
 import BootstrapSlider from '@/components/BootstrapSlider';
 import { connect } from 'react-redux';
-import { selectProducts, selectCategories, getProducts } from '@/data/productList';
+import { getNewArrivals, selectNewArrivals } from '@/data/home';
+import { selectCategories, getCategories } from '@/data/categories';
 
 class ProductList extends React.Component {
   breadcrumbLinks = [{ to: '/home', name: 'Home' }, { name: 'Product List' }];
@@ -15,7 +16,10 @@ class ProductList extends React.Component {
   };
 
   componentDidMount() {
-    this.props.fetchProducts();
+    this.props.fetchCategories();
+    if (this.props.products.length === 0) {
+      this.props.fetchProducts();
+    }
   }
 
   handleOnSlide = (values) => {
@@ -168,11 +172,12 @@ class ProductList extends React.Component {
 
 const mapStateToProps = (state) => ({
   categories: selectCategories(state),
-  products: selectProducts(state),
+  products: selectNewArrivals(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchProducts: () => dispatch(getProducts()),
+  fetchCategories: () => dispatch(getCategories()),
+  fetchProducts: () => dispatch(getNewArrivals()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductList);

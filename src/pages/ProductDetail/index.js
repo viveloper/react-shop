@@ -7,8 +7,8 @@ import ProductTabs from './ProductTabs';
 import QuantitySelect from './QuantitySelect';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { selectProducts, getProducts } from '@/data/productList';
 import { addCartItem } from '@/data/cart';
+import { getNewArrivals, selectNewArrivals } from '@/data/home';
 
 class ProductDetail extends React.Component {
   breadcrumbLinks = [
@@ -229,11 +229,11 @@ class ProductDetail extends React.Component {
 }
 
 const mapStateToProps = (state, props) => ({
-  product: selectProducts(state).find((product) => product.id === props.match.params.id),
+  product: selectNewArrivals(state).find((product) => product.id === props.match.params.id),
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchProducts: () => dispatch(getProducts()),
+  fetchProducts: () => dispatch(getNewArrivals()),
   onAddCartItem: (product, qty) => dispatch(addCartItem(product, qty)),
 });
 
