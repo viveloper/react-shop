@@ -9,6 +9,9 @@ export const required = (value) => (!isNil(value) && !isEmpty(value) ? undefined
 
 export const validEmail = (value) => (isEmail(value) ? undefined : 'Invalid Email');
 
+export const validPasswordMatch = (password1) => (password2) =>
+  password1 === password2 ? undefined : 'Passwords do not match';
+
 export const composeValidators = (...args) => (value) => {
   for (const validator of args) {
     const error = validator(value);

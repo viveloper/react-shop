@@ -4,12 +4,13 @@ import Modal from 'react-bootstrap/Modal';
 import { closeModal } from '@/data/modal';
 import useFocusEffect from '@/hooks/useFocusEffect';
 import { Form, Formik, Field, ErrorMessage } from 'formik';
-import { composeValidators, required, validEmail } from '@/validators';
+import { composeValidators, required, validEmail, validPasswordMatch } from '@/validators';
 import Alert from 'react-bootstrap/Alert';
 
 const INITIAL_VALUES = {
   email: '',
   password: '',
+  password2: '',
 };
 
 export default function SignupModal({ show }) {
@@ -33,7 +34,7 @@ export default function SignupModal({ show }) {
           </button>
         </Modal.Header>
         <Formik initialValues={INITIAL_VALUES} onSubmit={handleSubmit}>
-          {({ errors }) => (
+          {({ values, errors }) => (
             <Form>
               <div className="modal-body p-5">
                 <h4 className="modal-title mb-5">Sign Up</h4>
@@ -65,6 +66,21 @@ export default function SignupModal({ show }) {
                   {errors.password && (
                     <Alert className="mt-3" variant="danger">
                       {errors.password}
+                    </Alert>
+                  )}
+                </div>
+                <div className="form-group">
+                  <label htmlFor="signup-password">CONFIRM PASSWORD</label>
+                  <Field
+                    id="login-password"
+                    name="password2"
+                    type="password"
+                    className="form-control email"
+                    validate={composeValidators(required, validPasswordMatch(values.password))}
+                  />
+                  {errors.password2 && (
+                    <Alert className="mt-3" variant="danger">
+                      {errors.password2}
                     </Alert>
                   )}
                 </div>
