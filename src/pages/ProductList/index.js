@@ -3,23 +3,19 @@ import Breadcrumb from '@/components/Breadcrumb';
 import Product from '@/components/Product';
 import BootstrapSlider from '@/components/BootstrapSlider';
 import { connect } from 'react-redux';
-import { getNewArrivals, selectNewArrivals } from '@/data/home';
-import { selectCategories, getCategories } from '@/data/categories';
+import { getCategories, getProducts, selectCategories, selectProducts } from '@/data/productList';
 
 class ProductList extends React.Component {
   breadcrumbLinks = [{ to: '/home', name: 'Home' }, { name: 'Product List' }];
 
   state = {
     priceFilter: [1, 30],
-    selectedCategory: 'all',
     sortType: '0',
   };
 
   componentDidMount() {
     this.props.fetchCategories();
-    if (this.props.products.length === 0) {
-      this.props.fetchProducts();
-    }
+    this.props.fetchProducts();
   }
 
   handleOnSlide = (values) => {
@@ -29,9 +25,8 @@ class ProductList extends React.Component {
   };
 
   handleCategoryClick = (id) => {
-    this.setState({
-      selectedCategory: id,
-    });
+    console.log('fetch products by categoryid =', id);
+    this.props.fetchProducts(id);
   };
 
   handleSortTypeChange = (e) => {
@@ -43,10 +38,7 @@ class ProductList extends React.Component {
   getFilteredProducts(products) {
     const [min, max] = this.state.priceFilter;
 
-    const filteredProducts = (this.state.selectedCategory === 'all'
-      ? [...products]
-      : products.filter((product) => product.category === parseInt(this.state.selectedCategory))
-    ).filter((product) => product.price >= min * 1000 && product.price <= max * 1000);
+    const filteredProducts = products.filter((product) => product.price >= min * 1000 && product.price <= max * 1000);
 
     filteredProducts.sort((a, b) => {
       if (this.state.sortType === '0') {
@@ -172,12 +164,12 @@ class ProductList extends React.Component {
 
 const mapStateToProps = (state) => ({
   categories: selectCategories(state),
-  products: selectNewArrivals(state),
+  products: selectProducts(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
   fetchCategories: () => dispatch(getCategories()),
-  fetchProducts: () => dispatch(getNewArrivals()),
+  fetchProducts: (categoryId) => dispatch(getProducts(categoryId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductList);

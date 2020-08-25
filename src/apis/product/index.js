@@ -13,4 +13,16 @@ export const api = {
       throw Error(e.message);
     }
   },
+  async fetchProducts(categoryId = null) {
+    try {
+      const { data } = await apiClient.get('/product', {
+        params: {
+          categoryId,
+        },
+      });
+      return data;
+    } catch (e) {
+      throw Error(e.message);
+    }
+  },
 };
