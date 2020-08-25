@@ -8,7 +8,7 @@ import QuantitySelect from './QuantitySelect';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addCartItem } from '@/data/cart';
-import { getNewArrivals, selectNewArrivals } from '@/data/home';
+import { getProduct, getRelatedProducts, selectProduct, selectRelatedProducts } from '@/data/productDetail';
 
 class ProductDetail extends React.Component {
   breadcrumbLinks = [
@@ -18,38 +18,12 @@ class ProductDetail extends React.Component {
   ];
   state = {
     selectedQty: 1,
-    relatedProducts: [
-      {
-        id: '3',
-        name: 'React Product 3',
-        price: 4000,
-        info: 'Lorem ipsum dolor sit amet',
-        avg_stars: 2,
-        total_reviews: 10,
-        category: {
-          id: 3,
-          name: 'Notes',
-        },
-      },
-      {
-        id: '4',
-        name: 'React Product 4',
-        price: 5000,
-        info: 'Lorem ipsum dolor sit amet',
-        avg_stars: 1,
-        total_reviews: 10,
-        category: {
-          id: 5,
-          name: 'Clothes',
-        },
-      },
-    ],
   };
 
   componentDidMount() {
-    if (!this.props.product) {
-      this.props.fetchProducts();
-    }
+    const productId = this.props.match.params.id;
+    this.props.fetchProduct(productId);
+    this.props.fetchRelatedProducts(productId);
   }
 
   handleAddCartClicked = (event) => {
@@ -112,7 +86,7 @@ class ProductDetail extends React.Component {
               </div>
             </div>
             <div className="row items">
-              {this.state.relatedProducts.map((p) => (
+              {this.props.relatedProducts.map((p) => (
                 <div key={p.id} className="col-xs-6 col-sm-6 col-md-4 col-lg-4">
                   <Product {...p} />
                 </div>
@@ -228,12 +202,14 @@ class ProductDetail extends React.Component {
   }
 }
 
-const mapStateToProps = (state, props) => ({
-  product: selectNewArrivals(state).find((product) => product.id === props.match.params.id),
+const mapStateToProps = (state) => ({
+  product: selectProduct(state),
+  relatedProducts: selectRelatedProducts(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchProducts: () => dispatch(getNewArrivals()),
+  fetchProduct: (productId) => dispatch(getProduct(productId)),
+  fetchRelatedProducts: (productId) => dispatch(getRelatedProducts(productId)),
   onAddCartItem: (product, qty) => dispatch(addCartItem(product, qty)),
 });
 

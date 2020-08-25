@@ -25,4 +25,20 @@ export const api = {
       throw Error(e.message);
     }
   },
+  async fetchProduct(productId) {
+    try {
+      const { data } = await apiClient.get(`/product/${productId}`);
+      return data;
+    } catch (e) {
+      throw Error(e.message);
+    }
+  },
+  async fetchRelatedProducts(productId) {
+    try {
+      const { data } = await apiClient.get(`/product/${productId}/related`);
+      return data;
+    } catch (e) {
+      throw Error(e.message);
+    }
+  },
 };
